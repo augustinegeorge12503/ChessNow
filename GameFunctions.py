@@ -211,7 +211,7 @@ def loadImages():
     This will be called exactly once in the main.
     """
     # to change pieces, rename the file to directory name
-    piece_set = 'old'
+    piece_set = 'stupid'
     pieces = ['wp', 'wR', 'wN', 'wB', 'wK', 'wQ', 'bp', 'bR', 'bN', 'bB', 'bK', 'bQ']
     for piece in pieces:
         imagePath = f"assets/pieces/{piece_set}/{piece}.png"
