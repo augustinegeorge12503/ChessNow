@@ -24,7 +24,7 @@ def main():
     validMoves = gameState.getValidMoves()
     moveMade = False  # flag variable for when a move is made
     animate = False  # flag variable for when we should animate a move
-    loadImages()  # do this only once before while loop
+    loadImages('default')  # do this only once before while loop
     squareSelected = ()  # no square is selected initially, this will keep track of the last click of the user (tuple(row,col))
     playerClicks = []  # this will keep track of player clicks (two tuples)
     gameOver = False
@@ -37,49 +37,102 @@ def main():
     gamePage = Page() # tracks the current page of game
     design = Design() # display the design of a page
 
+    # initializing all buttons
+    # home
+    playButtonHome = Button('Play', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 200), screen)
+    keyButtonHome = Button('Key', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 290), screen)
+    settingsButtonHome = Button('Settings', design.smallFont, (0,0,0), (255,255,255), (200,50), (445,380), screen)
+    # key
+    backButtonKey = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
+    # settings
+    backButtonSettings = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
+    pieceButtonSettings = Button('Piece', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 200), screen)
+    # piece
+    backButtonPiece = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150,50), (770, 600), screen)
+    stupidButtonPiece = Button('stupid', design.smallFont, (0,0,0), (255,255,255), (150,50), (445,100), screen)
+    # pva
+    backButtonPva = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
+
     while True:
 
         # home game page
         if gamePage.page == 'home':
             
             design.showPage(gamePage.page, screen)
-            playButton = Button('Play', design.smallFont, (0,0,0), (255,255,255), (200,50), (376, 200), screen)
-            playButton.draw()
-
-            keyButton = Button('Key', design.smallFont, (0,0,0), (255,255,255), (200,50), (376, 290), screen)
-            keyButton.draw()
+            playButtonHome.draw()
+            keyButtonHome.draw()
+            settingsButtonHome.draw()
 
             for event in p.event.get():
                 if event.type == p.QUIT:
                     p.quit()
                     sys.exit()
                 elif event.type == p.MOUSEBUTTONDOWN:
-                    if playButton.checkCollision():
+                    if playButtonHome.checkCollision():
                         gamePage.changePage('pva')
-                    if keyButton.checkCollision():
+                    if keyButtonHome.checkCollision():
                         gamePage.changePage('key')
+                    if settingsButtonHome.checkCollision():
+                        gamePage.changePage('settings')
         
         # key game page
         if gamePage.page == 'key':
 
             design.showPage('key', screen)
-            backButton = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (640, 470), screen)
-            backButton.draw()
+            backButtonKey.draw()
 
             for event in p.event.get():
                 if event.type == p.QUIT:
                     p.quit()
                     sys.exit()
                 elif event.type == p.MOUSEBUTTONDOWN:
-                    if backButton.checkCollision():
+                    if backButtonKey.checkCollision():
                         gamePage.changePage('home')
+
+        # settings game page
+        if gamePage.page == 'settings':
+
+            design.showPage('settings', screen)
+            backButtonSettings.draw()
+            pieceButtonSettings.draw()
+
+            for event in p.event.get():
+                if event.type == p.QUIT:
+                    p.quit()
+                    sys.exit()
+                elif event.type == p.MOUSEBUTTONDOWN:
+                    if backButtonSettings.checkCollision():
+                        gamePage.changePage('home')
+                    if pieceButtonSettings.checkCollision():
+                        gamePage.changePage('piece')
+        
+        # piece game page
+        if gamePage.page == 'piece':
+            
+            design.showPage('piece', screen)
+            backButtonPiece.draw()
+            stupidButtonPiece.draw()
+
+            for event in p.event.get():
+                if event.type == p.QUIT:
+                    p.quit()
+                    sys.exit()
+                elif event.type == p.MOUSEBUTTONDOWN:
+                    if backButtonPiece.checkCollision():
+                        gamePage.changePage('home')
+                    if stupidButtonPiece.checkCollision():
+                        stupidButtonPiece.changeSelection()
+                        if stupidButtonPiece.isSelected(): 
+                            changePiece(stupidButtonPiece.text)
+                        else:
+                            changePiece('default')
+
 
         # pva game page
         if gamePage.page == 'pva':
 
             # draws the back button
-            backButton = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (640, 470), screen)
-            backButton.draw()
+            backButtonPva.draw()
 
             humanTurn = (gameState.whiteToMove and playerOne) or (not gameState.whiteToMove and playerTwo)
 
@@ -89,7 +142,7 @@ def main():
                     sys.exit()
                     # mouse handler
                 elif e.type == p.MOUSEBUTTONDOWN:
-                    if backButton.checkCollision():
+                    if backButtonPva.checkCollision():
                         gamePage.changePage('home')
                     if not gameOver:
                         location = p.mouse.get_pos()  # (x, y) location of the mouse

@@ -160,8 +160,8 @@ def handleMainMenuEvents():
            p.quit()
            sys.exit()
        elif event.type == p.MOUSEBUTTONDOWN:
-           playButton = p.Rect(150, 200, 180, 50)
-           if playButton.collidepoint(event.pos):
+           playButtonHome = p.Rect(150, 200, 180, 50)
+           if playButtonHome.collidepoint(event.pos):
                return False  # Return False to indicate that we should exit the main menu
    return True
 
@@ -170,11 +170,11 @@ def drawMainMenu(screen):
    font = p.font.SysFont("Arial", 28, True)
   
    # Play button
-   playButton = p.Rect(291, 206, 180, 50)
-   p.draw.rect(screen, p.Color("green"), playButton)
+   playButtonHome = p.Rect(291, 206, 180, 50)
+   p.draw.rect(screen, p.Color("green"), playButtonHome)
    textSurface = font.render("Play", True, p.Color("white"))
    textRect = textSurface.get_rect()
-   textRect.center = playButton.center
+   textRect.center = playButtonHome.center
    screen.blit(textSurface, textRect)
   
    # Play with AI button
@@ -186,35 +186,37 @@ def drawMainMenu(screen):
    screen.blit(textSurface, textRect)
   
    # Settings button
-   settingsButton = p.Rect(291, 326, 180, 50)
-   p.draw.rect(screen, p.Color("orange"), settingsButton)
+   settingsButtonHome = p.Rect(291, 326, 180, 50)
+   p.draw.rect(screen, p.Color("orange"), settingsButtonHome)
    textSurface = font.render("Settings", True, p.Color("white"))
    textRect = textSurface.get_rect()
-   textRect.center = settingsButton.center
+   textRect.center = settingsButtonHome.center
    screen.blit(textSurface, textRect)
   
    p.display.flip()  # Update the display after drawing everything
 
 def drawSettingsButtons(screen):
-    '''settingsButton = p.Rect(150, 260, 180, 50)
-    p.draw.rect(screen, p.Color("blue"), settingsButton)  # Draw the settings button
+    '''settingsButtonHome = p.Rect(150, 260, 180, 50)
+    p.draw.rect(screen, p.Color("blue"), settingsButtonHome)  # Draw the settings button
     font = p.font.SysFont("Arial", 28, True)
     textSurface = font.render("Settings", True, p.Color("white"))
     textRect = textSurface.get_rect()
-    textRect.center = settingsButton.center
+    textRect.center = settingsButtonHome.center
     screen.blit(textSurface, textRect)  # Blit the text onto the settings button
     p.display.flip()'''
 
-def loadImages():
+def loadImages(pieceSet):
     """
     Initialize a global directory of images.
     This will be called exactly once in the main.
     """
     # to change pieces, rename the file to directory name
-    piece_set = 'stupid'
     pieces = ['wp', 'wR', 'wN', 'wB', 'wK', 'wQ', 'bp', 'bR', 'bN', 'bB', 'bK', 'bQ']
     for piece in pieces:
-        imagePath = f"assets/pieces/{piece_set}/{piece}.png"
+        imagePath = f"assets/pieces/{pieceSet}/{piece}.png"
         original_image = p.image.load(imagePath)
         scaled_image = p.transform.smoothscale(original_image, (SQUARE_SIZE, SQUARE_SIZE))
         IMAGES[piece] = scaled_image
+
+def changePiece(newPieceSet):
+    loadImages(newPieceSet)

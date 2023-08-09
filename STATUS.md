@@ -10,3 +10,4 @@ add menu and basic ui
 
 change all variables to either camelcase(except for in_check in ChessEngine because there is a function called inCheck())
 
+todo: add sounds to clicks; mouse hover; piece, board and bg customization;

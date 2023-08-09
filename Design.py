@@ -29,11 +29,17 @@ class Design:
 
         # home page
         if page == 'home':
-            self.showText(self.bigFont, 'ChessNow', 376, 100, surface)
+            self.showText(self.bigFont, 'ChessNow', 445, 100, surface)
 
         elif page == 'key':
-            self.showText(self.smallFont, 'R:  Reset Board', 376, 220, surface)
-            self.showText(self.smallFont, 'Z:  Undo Move', 376, 260, surface)
+            self.showText(self.smallFont, 'R:  Reset Board', 445, 280, surface)
+            self.showText(self.smallFont, 'Z:  Undo Move', 445, 320, surface)
+        
+        elif page == 'settings':
+            self.showText(self.bigFont, 'Settings', 445, 100, surface)
+        
+        elif page == 'piece':
+            pass
 
     # set methods
     def setBackground(self, bg_name):

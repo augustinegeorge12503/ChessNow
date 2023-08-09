@@ -14,6 +14,7 @@ class Button:
         self.size = size
         self.pos = pos
         self.screen = screen
+        self.selected = False
 
         self.buttonRect = pygame.Rect(0,0,self.size[0], self.size[1])
         self.buttonRect.center = pos
@@ -27,12 +28,20 @@ class Button:
 
     def draw(self):
 
-        if self.buttonRect.collidepoint(pygame.mouse.get_pos()):
-            self.buttonColor = self.textColorAbsolute
-            self.textColor = self.buttonColorAbsolute
+        if not self.selected :
+            if self.buttonRect.collidepoint(pygame.mouse.get_pos()):
+                self.buttonColor = self.textColorAbsolute
+                self.textColor = self.buttonColorAbsolute
+            else:
+                self.buttonColor = self.buttonColorAbsolute
+                self.textColor = self.textColorAbsolute
         else:
-            self.buttonColor = self.buttonColorAbsolute
-            self.textColor = self.textColorAbsolute
+            if self.buttonRect.collidepoint(pygame.mouse.get_pos()):
+                self.buttonColor = self.buttonColorAbsolute
+                self.textColor = self.textColorAbsolute
+            else:
+                self.buttonColor = self.textColorAbsolute
+                self.textColor = self.buttonColorAbsolute
 
         pygame.draw.rect(self.screen, self.buttonColor, self.buttonRect, 0, 15)
         self.textSurf = self.font.render(self.text, True, self.textColor)
@@ -40,4 +49,10 @@ class Button:
     
     def checkCollision(self):
         return self.buttonRect.collidepoint(pygame.mouse.get_pos())
+    
+    def changeSelection(self):
+        self.selected = not self.selected
+    
+    def isSelected(self):
+        return self.selected
         
