@@ -4,7 +4,6 @@ Determining valid moves at current state.
 It will keep move log.
 """
 
-
 class GameState:
     def __init__(self):
         """
