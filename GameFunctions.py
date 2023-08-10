@@ -166,6 +166,7 @@ def handleMainMenuEvents():
    return True
 
 def drawMainMenu(screen):
+   
    screen.fill(p.Color("white"))
    font = p.font.SysFont("Arial", 28, True)
   
@@ -218,5 +219,23 @@ def loadImages(pieceSet):
         scaled_image = p.transform.smoothscale(original_image, (SQUARE_SIZE, SQUARE_SIZE))
         IMAGES[piece] = scaled_image
 
+def resetButtonSelection(pieceButtonList, selectedButton):
+    for pieceButton in pieceButtonList:
+        if pieceButton != selectedButton:
+            pieceButton.selected = False
+
 def changePiece(newPieceSet):
     loadImages(newPieceSet)
+
+def changePieceMenu(pieceButtonList, selectedButton):
+    if selectedButton.checkCollision():
+        resetButtonSelection(pieceButtonList, selectedButton)
+        selectedButton.changeSelection()
+        if selectedButton.isSelected():
+            changePiece(selectedButton.text)
+        else:
+            changePiece('default')
+
+def changePage(button, gamePage, page):
+    if button.checkCollision():
+        gamePage.changePage(page)

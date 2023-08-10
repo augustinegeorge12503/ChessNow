@@ -36,12 +36,9 @@ class Button:
                 self.buttonColor = self.buttonColorAbsolute
                 self.textColor = self.textColorAbsolute
         else:
-            if self.buttonRect.collidepoint(pygame.mouse.get_pos()):
-                self.buttonColor = self.buttonColorAbsolute
-                self.textColor = self.textColorAbsolute
-            else:
-                self.buttonColor = self.textColorAbsolute
-                self.textColor = self.buttonColorAbsolute
+            self.buttonColor = self.textColorAbsolute
+            self.textColor = self.buttonColorAbsolute
+                
 
         pygame.draw.rect(self.screen, self.buttonColor, self.buttonRect, 0, 15)
         self.textSurf = self.font.render(self.text, True, self.textColor)

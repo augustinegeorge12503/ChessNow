@@ -50,8 +50,12 @@ def main():
     # piece
     backButtonPiece = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150,50), (770, 600), screen)
     stupidButtonPiece = Button('stupid', design.smallFont, (0,0,0), (255,255,255), (150,50), (445,100), screen)
+    classicButtonPiece = Button('classic', design.smallFont, (0,0,0), (255,255,255), (150,50), (445, 160), screen)
     # pva
     backButtonPva = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
+
+    # piece button list
+    pieceButtonList = [stupidButtonPiece, classicButtonPiece]
 
     while True:
 
@@ -68,12 +72,9 @@ def main():
                     p.quit()
                     sys.exit()
                 elif event.type == p.MOUSEBUTTONDOWN:
-                    if playButtonHome.checkCollision():
-                        gamePage.changePage('pva')
-                    if keyButtonHome.checkCollision():
-                        gamePage.changePage('key')
-                    if settingsButtonHome.checkCollision():
-                        gamePage.changePage('settings')
+                    changePage(playButtonHome, gamePage, 'pva')
+                    changePage(keyButtonHome, gamePage, 'key')
+                    changePage(settingsButtonHome, gamePage, 'settings')
         
         # key game page
         if gamePage.page == 'key':
@@ -86,8 +87,7 @@ def main():
                     p.quit()
                     sys.exit()
                 elif event.type == p.MOUSEBUTTONDOWN:
-                    if backButtonKey.checkCollision():
-                        gamePage.changePage('home')
+                    changePage(backButtonKey, gamePage, 'home')
 
         # settings game page
         if gamePage.page == 'settings':
@@ -101,10 +101,8 @@ def main():
                     p.quit()
                     sys.exit()
                 elif event.type == p.MOUSEBUTTONDOWN:
-                    if backButtonSettings.checkCollision():
-                        gamePage.changePage('home')
-                    if pieceButtonSettings.checkCollision():
-                        gamePage.changePage('piece')
+                    changePage(backButtonSettings, gamePage, 'home')
+                    changePage(pieceButtonSettings, gamePage, 'piece')
         
         # piece game page
         if gamePage.page == 'piece':
@@ -112,21 +110,18 @@ def main():
             design.showPage('piece', screen)
             backButtonPiece.draw()
             stupidButtonPiece.draw()
+            classicButtonPiece.draw()
 
             for event in p.event.get():
                 if event.type == p.QUIT:
                     p.quit()
                     sys.exit()
                 elif event.type == p.MOUSEBUTTONDOWN:
-                    if backButtonPiece.checkCollision():
-                        gamePage.changePage('home')
-                    if stupidButtonPiece.checkCollision():
-                        stupidButtonPiece.changeSelection()
-                        if stupidButtonPiece.isSelected(): 
-                            changePiece(stupidButtonPiece.text)
-                        else:
-                            changePiece('default')
-
+                    changePage(backButtonPiece, gamePage, 'settings')
+                    # change piece in game
+                    changePieceMenu(pieceButtonList, stupidButtonPiece)
+                    changePieceMenu(pieceButtonList, classicButtonPiece)
+            
 
         # pva game page
         if gamePage.page == 'pva':
@@ -142,8 +137,7 @@ def main():
                     sys.exit()
                     # mouse handler
                 elif e.type == p.MOUSEBUTTONDOWN:
-                    if backButtonPva.checkCollision():
-                        gamePage.changePage('home')
+                    changePage(backButtonPva, gamePage, 'home')
                     if not gameOver:
                         location = p.mouse.get_pos()  # (x, y) location of the mouse
                         col = location[0] // SQUARE_SIZE
