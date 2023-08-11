@@ -1,6 +1,3 @@
-"""
-Main File ChessNow
-"""
 import pygame as p
 import ChessEngine, ChessAI
 import sys
@@ -12,10 +9,7 @@ from Button import Button
 from Page import Page
 
 def main():
-    """
-    The main driver for our code.
-    This will handle user input and updating the graphics.
-    """
+
     p.init()
     p.display.set_caption("ChessNow")
     screen = p.display.set_mode((BOARD_WIDTH + MOVELOG_PANEL_WIDTH, BOARD_HEIGHT))
@@ -24,7 +18,7 @@ def main():
     validMoves = gameState.getValidMoves()
     moveMade = False  # flag variable for when a move is made
     animate = False  # flag variable for when we should animate a move
-    loadImages('default')  # do this only once before while loop
+    loadImages('classic')  # do this only once before while loop
     squareSelected = ()  # no square is selected initially, this will keep track of the last click of the user (tuple(row,col))
     playerClicks = []  # this will keep track of player clicks (two tuples)
     gameOver = False
@@ -42,20 +36,67 @@ def main():
     playButtonHome = Button('Play', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 200), screen)
     keyButtonHome = Button('Key', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 290), screen)
     settingsButtonHome = Button('Settings', design.smallFont, (0,0,0), (255,255,255), (200,50), (445,380), screen)
+    
     # key
     backButtonKey = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
+    
     # settings
     backButtonSettings = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
     pieceButtonSettings = Button('Piece', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 200), screen)
+    boardButtonSettings = Button('Board', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 290), screen)
+    backButtonBoard = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
+    backgroundButtonSettings = Button('Background', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 380), screen)
+    backButtonBackground = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
+
     # piece
-    backButtonPiece = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150,50), (770, 600), screen)
-    stupidButtonPiece = Button('stupid', design.smallFont, (0,0,0), (255,255,255), (150,50), (445,100), screen)
-    classicButtonPiece = Button('classic', design.smallFont, (0,0,0), (255,255,255), (150,50), (445, 160), screen)
+    backButtonPiece = Button('Back', design.smallFont, (0,0,0), (255,255,255), (200,50), (770, 600), screen)
+    classicButtonPiece = Button('classic', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 100), screen)
+    classicExample = p.transform.smoothscale(p.image.load('assets/pieces/classic/wR.png'), (55, 55))
+    stupidButtonPiece = Button('stupid', design.smallFont, (0,0,0), (255,255,255), (200,50), (445,160), screen)
+    stupidExample = p.transform.smoothscale(p.image.load('assets/pieces/stupid/wR.png'), (55, 55))
+    simpleButtonPiece = Button('simple', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 220), screen)
+    simpleExample = p.transform.smoothscale(p.image.load('assets/pieces/simple/wR.png'), (55, 55))
+    chaturangaButtonPiece = Button('chaturanga', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 280), screen)
+    chaturangaExample = p.transform.smoothscale(p.image.load('assets/pieces/chaturanga/wR.png'), (55, 55))
+    cyberButtonPiece = Button('cyber', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 340), screen)
+    cyberExample = p.transform.smoothscale(p.image.load('assets/pieces/cyber/wR.png'), (55, 55))
+    
+    # boards column 1
+    classicBoardButton = Button('classic', design.smallFont, (0,0,0), ('#9135F0'), (200,50), (300, 100), screen)
+    classicBoardExample = p.transform.smoothscale(p.image.load('assets/boards/classic_board.png'), (55, 55))
+    midnightBoardButton = Button('midnight', design.smallFont, (0,0,0), ('#11009E'), (200,50), (300, 180), screen)
+    midnightBoardExample = p.transform.smoothscale(p.image.load('assets/boards/midnight_board.png'), (55, 55))
+    cafeBoardButton = Button('cafe', design.smallFont, (0,0,0), ('#B68860'), (200,50), (300, 260), screen)
+    cafeBoardExample = p.transform.smoothscale(p.image.load('assets/boards/cafe_board.png'), (55, 55))
+    checkersBoardButton = Button('checkers', design.smallFont, (0,0,0), ('#CC1817'), (200,50), (300, 340), screen)
+    checkersBoardExample = p.transform.smoothscale(p.image.load('assets/boards/checkers_board.png'), (55, 55))
+    grayBoardButton = Button('gray', design.smallFont, (0,0,0), ('#202B3F'), (200,50), (300, 420), screen)
+    grayBoardExample = p.transform.smoothscale(p.image.load('assets/boards/gray_board.png'), (55, 55))
+    forestBoardButton = Button('forest', design.smallFont, (0,0,0), ('#0B666B'), (200,50), (300, 500), screen)
+    forestBoardExample = p.transform.smoothscale(p.image.load('assets/boards/forest_board.png'), (55, 55))
+    tangerineBoardButton = Button('tangerine', design.smallFont, (0,0,0), ('#DD6200'), (200,50), (300, 580), screen)
+    tangerineBoardExample = p.transform.smoothscale(p.image.load('assets/boards/tangerine_board.png'), (55, 55))
+    # second column of boards
+    woodBoardButton = Button('wood', design.smallFont, (0,0,0), ('#833C1F'), (200,50), (550, 100), screen)
+    woodBoardExample = p.transform.smoothscale(p.image.load('assets/boards/wood_board.png'), (55, 55))
+    marbleBoardButton = Button('marble', design.smallFont, (0,0,0), ('#D0CDC8'), (200,50), (550, 180), screen)
+    marbleBoardExample = p.transform.smoothscale(p.image.load('assets/boards/marble_board.png'), (55, 55))
+    glassBoardButton = Button('glass', design.smallFont, (0,0,0), ('#768B96'), (200,50), (550, 260), screen)
+    glassBoardExample = p.transform.smoothscale(p.image.load('assets/boards/glass_board.png'), (55, 55))
+    onyxBoardButton = Button('onyx', design.smallFont, (0,0,0), ('#0F3044'), (200,50), (550, 340), screen)
+    onyxBoardExample = p.transform.smoothscale(p.image.load('assets/boards/onyx_board.png'), (55, 55))
+
     # pva
     backButtonPva = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
 
     # piece button list
-    pieceButtonList = [stupidButtonPiece, classicButtonPiece]
+    pieceButtonList = [classicButtonPiece, stupidButtonPiece, simpleButtonPiece, chaturangaButtonPiece, cyberButtonPiece]
+    boardButtonList = [classicBoardButton, midnightBoardButton, cafeBoardButton, checkersBoardButton, grayBoardButton, 
+                       forestBoardButton, tangerineBoardButton, woodBoardButton, marbleBoardButton, glassBoardButton, 
+                       onyxBoardButton]
+    
+    # settings check mark - currently unused
+    check = p.transform.smoothscale(p.image.load('assets/checks/check3.png'), (40, 40))
 
     while True:
 
@@ -95,6 +136,8 @@ def main():
             design.showPage('settings', screen)
             backButtonSettings.draw()
             pieceButtonSettings.draw()
+            boardButtonSettings.draw()
+            backgroundButtonSettings.draw()
 
             for event in p.event.get():
                 if event.type == p.QUIT:
@@ -103,14 +146,23 @@ def main():
                 elif event.type == p.MOUSEBUTTONDOWN:
                     changePage(backButtonSettings, gamePage, 'home')
                     changePage(pieceButtonSettings, gamePage, 'piece')
+                    changePage(boardButtonSettings, gamePage, 'board')
         
         # piece game page
         if gamePage.page == 'piece':
             
             design.showPage('piece', screen)
             backButtonPiece.draw()
-            stupidButtonPiece.draw()
             classicButtonPiece.draw()
+            screen.blit(classicExample, (250, 70))
+            stupidButtonPiece.draw()
+            screen.blit(stupidExample, (250, 130))
+            simpleButtonPiece.draw()
+            screen.blit(simpleExample, (250, 190))
+            chaturangaButtonPiece.draw()
+            screen.blit(chaturangaExample, (250, 250))
+            cyberButtonPiece.draw()
+            screen.blit(cyberExample, (250, 310))
 
             for event in p.event.get():
                 if event.type == p.QUIT:
@@ -121,7 +173,46 @@ def main():
                     # change piece in game
                     changePieceMenu(pieceButtonList, stupidButtonPiece)
                     changePieceMenu(pieceButtonList, classicButtonPiece)
+                    changePieceMenu(pieceButtonList, simpleButtonPiece)
+                    changePieceMenu(pieceButtonList, chaturangaButtonPiece)
+                    changePieceMenu(pieceButtonList, cyberButtonPiece)
             
+        if gamePage.page == 'board':
+            design.showPage('board', screen)
+            backButtonBoard.draw()
+            classicBoardButton.draw()
+            screen.blit(classicBoardExample, (120, 70))
+            midnightBoardButton.draw()
+            screen.blit(midnightBoardExample, (120, 150))
+            cafeBoardButton.draw()
+            screen.blit(cafeBoardExample, (120, 230))
+            checkersBoardButton.draw()
+            screen.blit(checkersBoardExample, (120, 310))
+            grayBoardButton.draw()
+            screen.blit(grayBoardExample, (120, 390))
+            forestBoardButton.draw()
+            screen.blit(forestBoardExample, (120, 470))
+            tangerineBoardButton.draw()
+            screen.blit(tangerineBoardExample, (120, 560))
+            woodBoardButton.draw()
+            screen.blit(woodBoardExample, (675, 70))
+            marbleBoardButton.draw()
+            screen.blit(marbleBoardExample, (675, 150))
+            glassBoardButton.draw()
+            screen.blit(glassBoardExample, (675, 230))
+            onyxBoardButton.draw()
+            screen.blit(onyxBoardExample, (675, 310))
+
+
+            for event in p.event.get():
+                if event.type == p.QUIT:
+                    p.quit()
+                    sys.exit()
+                elif event.type == p.MOUSEBUTTONDOWN:
+                    changePage(backButtonBoard, gamePage, 'settings')
+                    # these below are not functioning yet
+                    changeBoardMenu(boardButtonList, classicBoardButton)
+                    changeBoardMenu(boardButtonList, midnightBoardButton)
 
         # pva game page
         if gamePage.page == 'pva':

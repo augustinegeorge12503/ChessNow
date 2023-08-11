@@ -40,6 +40,10 @@ class Design:
         
         elif page == 'piece':
             pass
+        elif page == 'board':
+            pass
+        elif page == 'background':
+            pass
 
     # set methods
     def setBackground(self, bg_name):

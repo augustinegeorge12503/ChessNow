@@ -6,24 +6,20 @@ import pygame as p
 import sys
 
 def drawGameState(screen, gameState, validMoves, squareSelected):
-    """
-    Responsible for all the graphics within current game state.
-    """
     drawBoard(screen)  # draw squares on the board
     highlightSquares(screen, gameState, validMoves, squareSelected)
     drawPieces(screen, gameState.board)  # draw pieces on top of those squares
 
 def drawBoard(screen):
-    """
-    Draw the squares on the board.
-    The top left square is always light.
-    """
+# a1 square (bottom left) is always dark
     global colors
     colors = [p.Color("white"), p.Color("gray")]
     for row in range(DIMENSION):
         for column in range(DIMENSION):
             color = colors[((row + column) % 2)]
             p.draw.rect(screen, color, p.Rect(column * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
+
+
 
 def drawPieces(screen, board):
     """
@@ -227,6 +223,11 @@ def resetButtonSelection(pieceButtonList, selectedButton):
 def changePiece(newPieceSet):
     loadImages(newPieceSet)
 
+def changeBoard(newBoard):
+    p.image.load(f'assets/boards/{newBoard}_board.png')
+    global board
+    board = newBoard
+
 def changePieceMenu(pieceButtonList, selectedButton):
     if selectedButton.checkCollision():
         resetButtonSelection(pieceButtonList, selectedButton)
@@ -234,7 +235,16 @@ def changePieceMenu(pieceButtonList, selectedButton):
         if selectedButton.isSelected():
             changePiece(selectedButton.text)
         else:
-            changePiece('default')
+            changePiece('classic')
+
+def changeBoardMenu(boardButtonList, selectedButton):
+    if selectedButton.checkCollision():
+        resetButtonSelection(boardButtonList, selectedButton)
+        selectedButton.changeSelection()
+        if selectedButton.isSelected():
+            changeBoard(selectedButton.text)
+        else:
+            changeBoard('classic')
 
 def changePage(button, gamePage, page):
     if button.checkCollision():
