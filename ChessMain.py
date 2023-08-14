@@ -18,7 +18,7 @@ def main():
     validMoves = gameState.getValidMoves()
     moveMade = False  # flag variable for when a move is made
     animate = False  # flag variable for when we should animate a move
-    loadImages('classic')  # do this only once before while loop
+    changePiece('default') # do this only once before while loop
     squareSelected = ()  # no square is selected initially, this will keep track of the last click of the user (tuple(row,col))
     playerClicks = []  # this will keep track of player clicks (two tuples)
     gameOver = False
@@ -94,9 +94,6 @@ def main():
     boardButtonList = [classicBoardButton, midnightBoardButton, cafeBoardButton, checkersBoardButton, grayBoardButton, 
                        forestBoardButton, tangerineBoardButton, woodBoardButton, marbleBoardButton, glassBoardButton, 
                        onyxBoardButton]
-    
-    # settings check mark - currently unused
-    check = p.transform.smoothscale(p.image.load('assets/checks/check3.png'), (40, 40))
 
     while True:
 
@@ -213,6 +210,15 @@ def main():
                     # these below are not functioning yet
                     changeBoardMenu(boardButtonList, classicBoardButton)
                     changeBoardMenu(boardButtonList, midnightBoardButton)
+                    changeBoardMenu(boardButtonList, cafeBoardButton)
+                    changeBoardMenu(boardButtonList, checkersBoardButton)
+                    changeBoardMenu(boardButtonList, grayBoardButton)
+                    changeBoardMenu(boardButtonList, forestBoardButton)
+                    changeBoardMenu(boardButtonList, tangerineBoardButton)
+                    changeBoardMenu(boardButtonList, woodBoardButton)
+                    changeBoardMenu(boardButtonList, marbleBoardButton)
+                    changeBoardMenu(boardButtonList, glassBoardButton)
+                    changeBoardMenu(boardButtonList, onyxBoardButton)
 
         # pva game page
         if gamePage.page == 'pva':

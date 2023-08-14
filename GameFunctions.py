@@ -6,20 +6,9 @@ import pygame as p
 import sys
 
 def drawGameState(screen, gameState, validMoves, squareSelected):
-    drawBoard(screen)  # draw squares on the board
+    drawCustomBoard(BOARD, screen)
     highlightSquares(screen, gameState, validMoves, squareSelected)
     drawPieces(screen, gameState.board)  # draw pieces on top of those squares
-
-def drawBoard(screen):
-# a1 square (bottom left) is always dark
-    global colors
-    colors = [p.Color("white"), p.Color("gray")]
-    for row in range(DIMENSION):
-        for column in range(DIMENSION):
-            color = colors[((row + column) % 2)]
-            p.draw.rect(screen, color, p.Rect(column * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
-
-
 
 def drawPieces(screen, board):
     """
@@ -122,7 +111,7 @@ def animateMove(move, screen, board, clock):
     """
     Animating a move
     """
-    global colors
+    colors = [p.Color("white"), p.Color("gray")]
     dRow = move.endRow - move.startRow
     dCol = move.endCol - move.startCol
     framesPerSquare = 5  # frames to move one square
@@ -133,7 +122,7 @@ def animateMove(move, screen, board, clock):
     frameCount = (abs(dRow) + abs(dCol)) * framesPerSquare
     for frame in range(frameCount + 1):
         row, col = (move.startRow + dRow * frame / frameCount, move.startCol + dCol * frame / frameCount)
-        drawBoard(screen)
+        drawCustomBoard(BOARD, screen)
         drawPieces(screen, board)
         # erase the piece moved from its ending square
         color = colors[(move.endRow + move.endCol) % 2]
@@ -221,12 +210,12 @@ def resetButtonSelection(pieceButtonList, selectedButton):
             pieceButton.selected = False
 
 def changePiece(newPieceSet):
-    loadImages(newPieceSet)
+    global IMAGES
+    IMAGES = IMAGEDICT[newPieceSet]
 
 def changeBoard(newBoard):
-    p.image.load(f'assets/boards/{newBoard}_board.png')
-    global board
-    board = newBoard
+    global BOARD
+    BOARD = newBoard
 
 def changePieceMenu(pieceButtonList, selectedButton):
     if selectedButton.checkCollision():
@@ -244,8 +233,11 @@ def changeBoardMenu(boardButtonList, selectedButton):
         if selectedButton.isSelected():
             changeBoard(selectedButton.text)
         else:
-            changeBoard('classic')
+            changeBoard('abbys_fav')
 
 def changePage(button, gamePage, page):
     if button.checkCollision():
         gamePage.changePage(page)
+
+def drawCustomBoard(newBoard, screen):
+    screen.blit(BOARDS[newBoard], (0,0))
