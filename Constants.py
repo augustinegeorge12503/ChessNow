@@ -29,6 +29,8 @@ SIMPLE = preLoadImages('simple')
 STUPID = preLoadImages('stupid')
 CHATURANGA = preLoadImages('chaturanga')
 CYBER = preLoadImages('cyber')
+ORGANIC = preLoadImages('organic')
+ROYAL = preLoadImages('royal')
 
 IMAGEDICT = {
     'cburnett': CBURNETT,
@@ -36,7 +38,9 @@ IMAGEDICT = {
     'simple': SIMPLE,
     'stupid': STUPID,
     'chaturanga': CHATURANGA,
-    'cyber': CYBER
+    'cyber': CYBER,
+    'organic': ORGANIC,
+    'royal': ROYAL
 }
 
 # preloading boards

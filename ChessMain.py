@@ -101,10 +101,10 @@ def main():
     backButtonPva = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
 
     # piece button list
-    pieceButtonList = [classicButtonPiece, stupidButtonPiece, simpleButtonPiece, chaturangaButtonPiece, cyberButtonPiece]
+    pieceButtonList = [classicButtonPiece, stupidButtonPiece, simpleButtonPiece, chaturangaButtonPiece, cyberButtonPiece, organicButtonPiece, royalButtonPiece]
     boardButtonList = [classicBoardButton, midnightBoardButton, cafeBoardButton, checkersBoardButton, grayBoardButton, 
                        forestBoardButton, tangerineBoardButton, woodBoardButton, marbleBoardButton, glassBoardButton, 
-                       onyxBoardButton]
+                       onyxBoardButton, greenhouseBoardButton, parchmentBoardButton, sweettoothBoardButton]
 
     while True:
 
@@ -189,6 +189,8 @@ def main():
                     changePieceMenu(pieceButtonList, simpleButtonPiece)
                     changePieceMenu(pieceButtonList, chaturangaButtonPiece)
                     changePieceMenu(pieceButtonList, cyberButtonPiece)
+                    changePieceMenu(pieceButtonList, organicButtonPiece)
+                    changePieceMenu(pieceButtonList, royalButtonPiece)
             
         if gamePage.page == 'board':
             design.showPage('board', screen)

@@ -64,7 +64,7 @@ piecePositionScores = {"wN": knightScores,
 
 CHECKMATE = 1000
 STALEMATE = 0
-DEPTH = 3
+DEPTH = 1
 
 def findBestMove(gameState, validMoves, returnQueue):
     global nextMove
