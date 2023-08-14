@@ -11,7 +11,7 @@ class Design:
         self.color = (255,255,255)
         self.bigFont = pygame.font.Font(f'assets/font/vermin_vibes.otf', 50)
         self.smallFont = pygame.font.Font(f'assets/font/vermin_vibes.otf', 20)
-        self.setBackground('starry')
+        self.setBackground('all_black_bg')
 
     # show functions
     def showBackground(self, surface):
@@ -29,6 +29,8 @@ class Design:
 
         # home page
         if page == 'home':
+            logo = p.transform.scale(p.image.load('assets/logo.png'), (100,100))
+            surface.blit(logo, (400, 45))
             self.showText(self.bigFont, 'ChessNow', 445, 100, surface)
 
         elif page == 'key':

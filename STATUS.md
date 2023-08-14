@@ -17,12 +17,17 @@ change all variables to either camelcase(except for in_check in ChessEngine beca
 todo: add sounds to clicks; mouse hover; piece(checked off - ABBY), board and bg customization
 
 as of 8.11.23 TODO:
-- board saving after button click and image of board loading in game needs done
-- need to figure out a way to put check marks by currently selected setting
-- make background page
-- ABBY DESIGN -> characters, robot expressions, icon boarders, movelog gradient background
+- make background page and customization
+- ABBY DESIGN -> robot expressions, 1 more piece set?, settings module boxes
 - ardit -> add multilevel bots
 - general -> add bot selection screen, add meet the creators screen??
+
+abby completed 8.14.23:
+- added organic and royal piece sets
+- added 3 new boards and completed boards page
+- updated piece previews -> not final might round the corners more/make semi-transparent
+- logo on homescreen + new background
+
 
 
 also:

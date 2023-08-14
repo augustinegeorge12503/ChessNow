@@ -10,7 +10,7 @@ DIMENSION = 8
 SQUARE_SIZE = BOARD_HEIGHT // DIMENSION
 MAX_FPS = 25
 IMAGES = {}
-BOARD = 'abbys_fav'
+BOARD = 'classic'
 
 # preloading pieces
 def preLoadImages(pieceset):
@@ -23,7 +23,7 @@ def preLoadImages(pieceset):
         imageDict[piece] = scaled_image
     return imageDict
 
-DEFAULT = preLoadImages('default')
+CBURNETT = preLoadImages('cburnett')
 CLASSIC = preLoadImages('classic')
 SIMPLE = preLoadImages('simple')
 STUPID = preLoadImages('stupid')
@@ -31,7 +31,7 @@ CHATURANGA = preLoadImages('chaturanga')
 CYBER = preLoadImages('cyber')
 
 IMAGEDICT = {
-    'default': DEFAULT,
+    'cburnett': CBURNETT,
     'classic': CLASSIC,
     'simple': SIMPLE,
     'stupid': STUPID,
@@ -42,7 +42,7 @@ IMAGEDICT = {
 # preloading boards
 BOARDS = {}
 
-boardList = ['abbys_fav', 'cafe', 'checkers', 'classic', 'forest', 'glass', 'gray', 'marble', 'midnight', 'onyx', 'tangerine', 'wood']
+boardList = ['abbys_fav', 'cafe', 'checkers', 'classic', 'forest', 'glass', 'gray', 'marble', 'midnight', 'onyx', 'tangerine', 'wood', 'greenhouse', 'parchment', 'sweettooth']
 for board in boardList:
     image = p.transform.scale(p.image.load(f'assets/boards/{board}_board.png'), (BOARD_WIDTH, BOARD_HEIGHT))
     BOARDS[board] = image

@@ -233,7 +233,7 @@ def changeBoardMenu(boardButtonList, selectedButton):
         if selectedButton.isSelected():
             changeBoard(selectedButton.text)
         else:
-            changeBoard('abbys_fav')
+            changeBoard('classic')
 
 def changePage(button, gamePage, page):
     if button.checkCollision():
