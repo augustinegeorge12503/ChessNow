@@ -107,7 +107,7 @@ def main():
     sweettoothBoardExample = p.transform.smoothscale(p.image.load('assets/boards/sweettooth_board.png'), (55, 55))
 
     #pva
-    backButtonPva = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
+    forefeitButtonPva = Button('Forefeit', design.smallFont, (0,0,0), (255,255,255), (270, 100), (770, 600), screen)
 
     # piece button list
     pieceButtonList = [classicButtonPiece, stupidButtonPiece, simpleButtonPiece, chaturangaButtonPiece, cyberButtonPiece, organicButtonPiece, royalButtonPiece]
@@ -283,7 +283,7 @@ def main():
 
             # draws the back button
             design.showPage('pva', screen)
-            backButtonPva.draw()
+            forefeitButtonPva.draw()
 
             humanTurn = (gameState.whiteToMove and playerOne) or (not gameState.whiteToMove and playerTwo)
 
@@ -293,7 +293,20 @@ def main():
                     sys.exit()
                     # mouse handler
                 elif e.type == p.MOUSEBUTTONDOWN:
-                    changePage(backButtonPva, gamePage, 'home')
+                    if forefeitButtonPva.checkCollision():
+                        changePage(forefeitButtonPva, gamePage, 'home')
+                        gameState = ChessEngine.GameState()
+                        validMoves = gameState.getValidMoves()
+                        squareSelected = ()
+                        playerClicks = []
+                        moveMade = False
+                        animate = False
+                        gameOver = False
+                        if aiThinking:
+                            moveFinderProcess.terminate()
+                            aiThinking = False
+                        moveUndone = True
+
                     if not gameOver:
                         location = p.mouse.get_pos()  # (x, y) location of the mouse
                         col = location[0] // SQUARE_SIZE
