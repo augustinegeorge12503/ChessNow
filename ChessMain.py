@@ -33,20 +33,29 @@ def main():
 
     # initializing all buttons
     # home
-    playButtonHome = Button('Play', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 200), screen)
-    keyButtonHome = Button('Key', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 290), screen)
-    settingsButtonHome = Button('Settings', design.smallFont, (0,0,0), (255,255,255), (200,50), (445,380), screen)
+    playButtonHome = Button('Play', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 220), screen)
+    keyButtonHome = Button('Key', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 310), screen)
+    settingsButtonHome = Button('Settings', design.smallFont, (0,0,0), (255,255,255), (200,50), (445,400), screen)
     
+    # pva select
+    playButtonFriendly = Button('Play', design.smallFont, ('#FF5F00'), ('#FF9600'), (150,50), (105, 535), screen)
+    playButtonEvil = Button('Play', design.smallFont, ('#008C5C'), ('#92F1AA'), (150,50), (275, 535), screen)
+    playButtonAug = Button('Play', design.smallFont, ('#80001D'), ('#FF003B'), (150,50), (445, 535), screen)
+    playButtonArdit = Button('Play', design.smallFont, ('#006994'), ('#00B6FF'), (150,50), (615, 535), screen)
+    playButtonAbby = Button('Play', design.smallFont, ('#CBAC19'), ('#F9EF4D'), (150,50), (785, 535), screen)
+
     # key
     backButtonKey = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
     
-    # settings
+    # settings/back buttons
     backButtonSettings = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
-    pieceButtonSettings = Button('Piece', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 200), screen)
-    boardButtonSettings = Button('Board', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 290), screen)
+    pieceButtonSettings = Button('Piece', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 220), screen)
+    boardButtonSettings = Button('Board', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 310), screen)
     backButtonBoard = Button('Back', design.smallFont, (0,0,0), (255,255,255), (120, 50), (805, 600), screen)
-    backgroundButtonSettings = Button('Background', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 380), screen)
+    backgroundButtonSettings = Button('Background', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 400), screen)
     backButtonBackground = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
+    backButtonPvaSelect = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (785, 600), screen)
+
 
     # piece
     backButtonPiece = Button('Back', design.smallFont, (0,0,0), (255,255,255), (200,50), (770, 600), screen)
@@ -121,7 +130,7 @@ def main():
                     p.quit()
                     sys.exit()
                 elif event.type == p.MOUSEBUTTONDOWN:
-                    changePage(playButtonHome, gamePage, 'pva')
+                    changePage(playButtonHome, gamePage, 'pva_select')
                     changePage(keyButtonHome, gamePage, 'key')
                     changePage(settingsButtonHome, gamePage, 'settings')
         
@@ -246,6 +255,28 @@ def main():
                     changeBoardMenu(boardButtonList, greenhouseBoardButton)
                     changeBoardMenu(boardButtonList, parchmentBoardButton)
                     changeBoardMenu(boardButtonList, sweettoothBoardButton)
+
+        # select AI opponent
+        if gamePage.page == 'pva_select':
+            design.showPage('pva_select', screen)
+            backButtonPvaSelect.draw()
+            playButtonFriendly.draw()
+            playButtonEvil.draw()
+            playButtonAug.draw()
+            playButtonArdit.draw()
+            playButtonAbby.draw()
+
+            for event in p.event.get():
+                if event.type == p.QUIT:
+                    p.quit()
+                    sys.exit()
+                elif event.type == p.MOUSEBUTTONDOWN:
+                    changePage(playButtonFriendly, gamePage, 'pva')
+                    changePage(playButtonEvil, gamePage, 'pva')
+                    changePage(playButtonAug, gamePage, 'pva')
+                    changePage(playButtonArdit, gamePage, 'pva')
+                    changePage(playButtonAbby, gamePage, 'pva')
+                    changePage(backButtonPvaSelect, gamePage, 'home')
 
         # pva game page
         if gamePage.page == 'pva':

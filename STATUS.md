@@ -29,6 +29,12 @@ abby completed 8.14.23:
 - logo on homescreen + new background
 
 
+abby completed 8.15.23:
+- AI opponent selection page -> header, AI names, icon, box for text, individual play buttons (all take to same game rn)
+- deleted the drawSettings function that was commented out and not being used
+- shifted homescreen buttons down slightly
+- set default background to agreed upon purple + black combo
+
 
 also:
 

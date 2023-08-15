@@ -181,15 +181,6 @@ def drawMainMenu(screen):
   
    p.display.flip()  # Update the display after drawing everything
 
-def drawSettingsButtons(screen):
-    '''settingsButtonHome = p.Rect(150, 260, 180, 50)
-    p.draw.rect(screen, p.Color("blue"), settingsButtonHome)  # Draw the settings button
-    font = p.font.SysFont("Arial", 28, True)
-    textSurface = font.render("Settings", True, p.Color("white"))
-    textRect = textSurface.get_rect()
-    textRect.center = settingsButtonHome.center
-    screen.blit(textSurface, textRect)  # Blit the text onto the settings button
-    p.display.flip()'''
 
 def loadImages(pieceSet):
     """
