@@ -45,20 +45,20 @@ def main():
     playButtonAbby = Button('Play', design.smallFont, ('#CBAC19'), ('#F9EF4D'), (150,50), (785, 535), screen)
 
     # key
-    backButtonKey = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
+    backButtonKey = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (785, 600), screen)
     
     # settings/back buttons
-    backButtonSettings = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
+    backButtonSettings = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (785, 600), screen)
     pieceButtonSettings = Button('Piece', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 220), screen)
     boardButtonSettings = Button('Board', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 310), screen)
-    backButtonBoard = Button('Back', design.smallFont, (0,0,0), (255,255,255), (120, 50), (805, 600), screen)
+    backButtonBoard = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (785, 600), screen)
     backgroundButtonSettings = Button('Background', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 400), screen)
     backButtonBackground = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
     backButtonPvaSelect = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (785, 600), screen)
 
 
     # piece
-    backButtonPiece = Button('Back', design.smallFont, (0,0,0), (255,255,255), (200,50), (770, 600), screen)
+    backButtonPiece = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150,50), (785, 600), screen)
     classicButtonPiece = Button('classic', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 80), screen)
     classicExample = p.transform.smoothscale(p.image.load('assets/pieces/examples/classic_example.png'), (65,65))
     stupidButtonPiece = Button('stupid', design.smallFont, (0,0,0), (255,255,255), (200,50), (445,165), screen)
@@ -106,7 +106,7 @@ def main():
     sweettoothBoardButton = Button('sweettooth', design.smallFont, (0,0,0), ('#FCA6C9'), (200,50), (550, 580), screen)
     sweettoothBoardExample = p.transform.smoothscale(p.image.load('assets/boards/sweettooth_board.png'), (55, 55))
 
-    # pva
+    #pva
     backButtonPva = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
 
     # piece button list
@@ -282,6 +282,7 @@ def main():
         if gamePage.page == 'pva':
 
             # draws the back button
+            design.showPage('pva', screen)
             backButtonPva.draw()
 
             humanTurn = (gameState.whiteToMove and playerOne) or (not gameState.whiteToMove and playerTwo)
@@ -367,6 +368,7 @@ def main():
 
             if not gameOver:
                 drawMoveLog(screen, gameState, moveLogFont)
+                drawGameState(screen, gameState, validMoves, squareSelected)
 
             if gameState.checkmate:
                 gameOver = True
@@ -377,8 +379,6 @@ def main():
             elif gameState.stalemate:
                 gameOver = True
                 drawEndGameText(screen, "Stalemate")
-                
-            drawGameState(screen, gameState, validMoves, squareSelected)
 
         p.display.flip()
 
