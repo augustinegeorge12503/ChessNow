@@ -111,7 +111,7 @@ def main():
     sweettoothBoardButton = Button('sweettooth', design.smallFont, (0,0,0), ('#FCA6C9'), (200,50), (550, 580), screen)
     sweettoothBoardExample = p.transform.smoothscale(p.image.load('assets/boards/sweettooth_board.png'), (55, 55))
 
-    #pva
+    # pva
     forefeitButtonPva = Button('Forefeit', design.smallFont, (0,0,0), (255,255,255), (240, 80), (765, 600), screen)
 
     # piece button list
