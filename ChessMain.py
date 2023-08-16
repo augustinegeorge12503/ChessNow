@@ -1,5 +1,5 @@
 import pygame as p
-import ChessEngine, ChessAI
+import ChessEngine
 import sys
 from multiprocessing import Process, Queue
 from Constants import * 
@@ -7,6 +7,7 @@ from GameFunctions import *
 from Design import Design
 from Button import Button
 from Page import Page
+from ChessBot import ChessBot
 
 def main():
 
@@ -30,6 +31,8 @@ def main():
     playerTwo = False  # if a human is playing white, then this will be True, else False
     gamePage = Page() # tracks the current page of game
     design = Design() # display the design of a page
+    Bot = ChessBot() # game bot
+
 
     # initializing all buttons
     # home
@@ -107,7 +110,7 @@ def main():
     sweettoothBoardExample = p.transform.smoothscale(p.image.load('assets/boards/sweettooth_board.png'), (55, 55))
 
     #pva
-    forefeitButtonPva = Button('Forefeit', design.smallFont, (0,0,0), (255,255,255), (270, 100), (770, 600), screen)
+    forefeitButtonPva = Button('Forefeit', design.smallFont, (0,0,0), (255,255,255), (240, 80), (765, 600), screen)
 
     # piece button list
     pieceButtonList = [classicButtonPiece, stupidButtonPiece, simpleButtonPiece, chaturangaButtonPiece, cyberButtonPiece, organicButtonPiece, royalButtonPiece]
@@ -272,10 +275,20 @@ def main():
                     sys.exit()
                 elif event.type == p.MOUSEBUTTONDOWN:
                     changePage(playButtonFriendly, gamePage, 'pva')
+                    if playButtonFriendly.checkCollision():
+                        Bot.assignBot('beep')
                     changePage(playButtonEvil, gamePage, 'pva')
+                    if playButtonEvil.checkCollision():
+                        Bot.assignBot('boop')
                     changePage(playButtonAug, gamePage, 'pva')
+                    if playButtonAug.checkCollision():
+                        Bot.assignBot('augustine')
                     changePage(playButtonArdit, gamePage, 'pva')
+                    if playButtonArdit.checkCollision():
+                        Bot.assignBot('ardit')
                     changePage(playButtonAbby, gamePage, 'pva')
+                    if playButtonAbby.checkCollision():
+                        Bot.assignBot('abby')
                     changePage(backButtonPvaSelect, gamePage, 'home')
 
         # pva game page
@@ -359,13 +372,13 @@ def main():
                     aiThinking = True
                     returnQueue = Queue()
                     # Use AI to find the best move
-                    moveFinderProcess = Process(target=ChessAI.findBestMove, args=(gameState, validMoves, returnQueue))
+                    moveFinderProcess = Process(target=Bot.findBestMove, args=(gameState, validMoves, returnQueue))
                     moveFinderProcess.start()
 
                 if not moveFinderProcess.is_alive():
                     aiMove = returnQueue.get()
                     if aiMove is None:
-                        aiMove = ChessAI.findRandomMove(validMoves)
+                        aiMove = Bot.findRandomMove(validMoves)
                     gameState.makeMove(aiMove)
                     moveMade = True
                     animate = True
@@ -386,9 +399,9 @@ def main():
             if gameState.checkmate:
                 gameOver = True
                 if gameState.whiteToMove:
-                    drawEndGameText(screen, "Black wins by checkmate")
+                    drawEndGameText(screen, "Black wins by CHECKMATE")
                 else:
-                    drawEndGameText(screen, "White wins by checkmate")
+                    drawEndGameText(screen, "White wins by CHECKMATE")
             elif gameState.stalemate:
                 gameOver = True
                 drawEndGameText(screen, "Stalemate")
