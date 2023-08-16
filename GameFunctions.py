@@ -232,3 +232,9 @@ def changePage(button, gamePage, page):
 
 def drawCustomBoard(newBoard, screen):
     screen.blit(BOARDS[newBoard], (0,0))
+
+def playSound(move, moveSound, captureSound):
+    if move.isCapture:
+        captureSound.play()
+    else:
+        moveSound.play()

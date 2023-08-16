@@ -8,6 +8,7 @@ from Design import Design
 from Button import Button
 from Page import Page
 from ChessBot import ChessBot
+from Sound import Sound
 
 def main():
 
@@ -32,7 +33,8 @@ def main():
     gamePage = Page() # tracks the current page of game
     design = Design() # display the design of a page
     Bot = ChessBot() # game bot
-
+    moveSound = Sound('assets/sounds/move.wav')
+    captureSound = Sound('assets/sounds/capture.wav')
 
     # initializing all buttons
     # home
@@ -335,6 +337,7 @@ def main():
                             for i in range(len(validMoves)):
                                 if move == validMoves[i]:
                                     gameState.makeMove(validMoves[i])
+                                    playSound(move, moveSound, captureSound)
                                     moveMade = True
                                     animate = True
                                     squareSelected = ()  # reset user clicks
@@ -380,6 +383,7 @@ def main():
                     if aiMove is None:
                         aiMove = Bot.findRandomMove(validMoves)
                     gameState.makeMove(aiMove)
+                    playSound(aiMove, moveSound, captureSound)
                     moveMade = True
                     animate = True
                     aiThinking = False
