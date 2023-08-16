@@ -228,6 +228,7 @@ def changeBoardMenu(boardButtonList, selectedButton):
 
 def changePage(button, gamePage, page):
     if button.checkCollision():
+        button.playClickSound()
         gamePage.changePage(page)
 
 def drawCustomBoard(newBoard, screen):

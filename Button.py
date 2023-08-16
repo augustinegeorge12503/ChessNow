@@ -2,6 +2,7 @@
 creates a button
 """
 import pygame
+from Sound import Sound
 
 class Button:
 
@@ -25,6 +26,7 @@ class Button:
 
         self.buttonColorAbsolute = self.buttonColor
         self.textColorAbsolute = self.textColor
+        self.sound = Sound('assets/sounds/click1.wav')
 
     def draw(self):
 
@@ -52,4 +54,7 @@ class Button:
     
     def isSelected(self):
         return self.selected
+    
+    def playClickSound(self):
+        self.sound.play()
         
