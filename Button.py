@@ -57,4 +57,3 @@ class Button:
     
     def playClickSound(self):
         self.sound.play()
-        
