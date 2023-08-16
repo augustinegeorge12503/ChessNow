@@ -75,6 +75,7 @@ class Design:
 
         elif page == 'key':
             self.showBackground(surface)
+            self.showText(self.bigFont, 'Keybinds', 445, 100, surface)
             self.showText(self.smallFont, 'R:  Reset Board', 445, 280, surface)
             self.showText(self.smallFont, 'Z:  Undo Move', 445, 320, surface)
         

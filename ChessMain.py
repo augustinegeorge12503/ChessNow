@@ -38,9 +38,9 @@ def main():
 
     # initializing all buttons
     # home
-    playButtonHome = Button('Play', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 220), screen)
-    keyButtonHome = Button('Key', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 310), screen)
-    settingsButtonHome = Button('Settings', design.smallFont, (0,0,0), (255,255,255), (200,50), (445,400), screen)
+    playButtonHome = Button('Play', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 245), screen)
+    keyButtonHome = Button('Key', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 335), screen)
+    settingsButtonHome = Button('Settings', design.smallFont, (0,0,0), (255,255,255), (200,50), (445,425), screen)
     
     # pva select
     playButtonFriendly = Button('Play', design.smallFont, ('#FF5F00'), ('#FF9600'), (150,50), (105, 535), screen)
@@ -54,10 +54,10 @@ def main():
     
     # settings/back buttons
     backButtonSettings = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (785, 600), screen)
-    pieceButtonSettings = Button('Piece', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 220), screen)
-    boardButtonSettings = Button('Board', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 310), screen)
-    backButtonBoard = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (785, 600), screen)
-    backgroundButtonSettings = Button('Background', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 400), screen)
+    pieceButtonSettings = Button('Piece', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 245), screen)
+    boardButtonSettings = Button('Board', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 335), screen)
+    backButtonBoard = Button('Back', design.smallFont, (0,0,0), (255,255,255), (125, 50), (800, 600), screen)
+    backgroundButtonSettings = Button('Background', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 425), screen)
     backButtonBackground = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
     backButtonPvaSelect = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (785, 600), screen)
 
