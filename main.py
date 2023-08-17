@@ -39,76 +39,74 @@ def main():
     # initializing all buttons
     # home
     playButtonHome = Button('Play', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 245), screen)
-    keyButtonHome = Button('Key', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 335), screen)
-    settingsButtonHome = Button('Settings', design.smallFont, (0,0,0), (255,255,255), (200,50), (445,425), screen)
+    settingsButtonHome = Button('Settings', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 335), screen)
+    creditButtonHome = Button('Creators', design.smallFont, (0,0,0), (255,255,255), (200,50), (445,425), screen)
     
     # pva select
-    playButtonFriendly = Button('Play', design.smallFont, ('#FF5F00'), ('#FF9600'), (150,50), (105, 535), screen)
-    playButtonEvil = Button('Play', design.smallFont, ('#008C5C'), ('#92F1AA'), (150,50), (275, 535), screen)
-    playButtonAug = Button('Play', design.smallFont, ('#80001D'), ('#FF003B'), (150,50), (445, 535), screen)
-    playButtonArdit = Button('Play', design.smallFont, ('#006994'), ('#00B6FF'), (150,50), (615, 535), screen)
-    playButtonAbby = Button('Play', design.smallFont, ('#CBAC19'), ('#F9EF4D'), (150,50), (785, 535), screen)
+    playButtonFriendly = Button('Play', design.smallFont, ('#FF9600'), (0,0,0), (150,50), (105, 535), screen)
+    playButtonEvil = Button('Play', design.smallFont, ('#92F1AA'), (0,0,0), (150,50), (275, 535), screen)
+    playButtonAug = Button('Play', design.smallFont, ('#FF003B'), (0,0,0), (150,50), (445, 535), screen)
+    playButtonArdit = Button('Play', design.smallFont, ('#00B6FF'), (0,0,0), (150,50), (615, 535), screen)
+    playButtonAbby = Button('Play', design.smallFont, ('#F9EF4D'), (0,0,0), (150,50), (785, 535), screen)
 
-    # key
-    backButtonKey = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (785, 600), screen)
+    # creators
+    backButtonCredit = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (785, 600), screen)
     
     # settings/back buttons
     backButtonSettings = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (785, 600), screen)
-    pieceButtonSettings = Button('Piece', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 245), screen)
-    boardButtonSettings = Button('Board', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 335), screen)
-    backButtonBoard = Button('Back', design.smallFont, (0,0,0), (255,255,255), (125, 50), (800, 600), screen)
-    backgroundButtonSettings = Button('Background', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 425), screen)
-    backButtonBackground = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (770, 600), screen)
+    pieceButtonSettings = Button('Piece', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 250), screen)
+    boardButtonSettings = Button('Board', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 350), screen)
+    backButtonBoard = Button('Back', design.smallFont, (0,0,0), (255,255,255), (155, 50), (785, 600), screen)
     backButtonPvaSelect = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150, 50), (785, 600), screen)
 
 
     # piece
     backButtonPiece = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150,50), (785, 600), screen)
-    classicButtonPiece = Button('classic', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 80), screen, selected=True)
+    classicButtonPiece = Button('classic', design.smallFont, (0,0,0), (255,255,255), (200,50), (495, 80), screen, selected=True)
     classicExample = p.transform.smoothscale(p.image.load('assets/pieces/examples/classic_example.png'), (65,65))
-    stupidButtonPiece = Button('stupid', design.smallFont, (0,0,0), (255,255,255), (200,50), (445,165), screen)
+    stupidButtonPiece = Button('stupid', design.smallFont, (0,0,0), (255,255,255), (200,50), (495,165), screen)
     stupidExample = p.transform.smoothscale(p.image.load('assets/pieces/examples/stupid_example.png'), (65,65))
-    simpleButtonPiece = Button('simple', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 250), screen)
+    simpleButtonPiece = Button('simple', design.smallFont, (0,0,0), (255,255,255), (200,50), (495, 250), screen)
     simpleExample = p.transform.smoothscale(p.image.load('assets/pieces/examples/simple_example.png'), (65,65))
-    chaturangaButtonPiece = Button('chaturanga', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 335), screen)
+    chaturangaButtonPiece = Button('chaturanga', design.smallFont, (0,0,0), (255,255,255), (200,50), (495, 335), screen)
     chaturangaExample = p.transform.smoothscale(p.image.load('assets/pieces/examples/chat_example.png'), (65,65))
-    cyberButtonPiece = Button('cyber', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 420), screen)
+    cyberButtonPiece = Button('cyber', design.smallFont, (0,0,0), (255,255,255), (200,50), (495, 420), screen)
     cyberExample = p.transform.smoothscale(p.image.load('assets/pieces/examples/cyber_example.png'), (65,65))
-    organicButtonPiece = Button('organic', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 505), screen)
+    organicButtonPiece = Button('organic', design.smallFont, (0,0,0), (255,255,255), (200,50), (495, 505), screen)
     organicExample = p.transform.smoothscale(p.image.load('assets/pieces/examples/organic_example.png'), (65,65))
-    royalButtonPiece = Button('royal', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 590), screen)
+    royalButtonPiece = Button('royal', design.smallFont, (0,0,0), (255,255,255), (200,50), (495, 590), screen)
     royalExample = p.transform.smoothscale(p.image.load('assets/pieces/examples/royal_example.png'), (65,65))
 
 
     # boards column 1
-    classicBoardButton = Button('classic', design.smallFont, (0,0,0), ('#9135F0'), (200,50), (300, 100), screen, selected=True)
+    classicBoardButton = Button('classic', design.smallFont, (0,0,0), ('#9135F0'), (200,50), (300, 50), screen, selected=True)
     classicBoardExample = p.transform.smoothscale(p.image.load('assets/boards/classic_board.png'), (55, 55))
-    midnightBoardButton = Button('midnight', design.smallFont, (0,0,0), ('#11009E'), (200,50), (300, 180), screen)
+    midnightBoardButton = Button('midnight', design.smallFont, (0,0,0), ('#11009E'), (200,50), (300, 130), screen)
     midnightBoardExample = p.transform.smoothscale(p.image.load('assets/boards/midnight_board.png'), (55, 55))
-    cafeBoardButton = Button('cafe', design.smallFont, (0,0,0), ('#B68860'), (200,50), (300, 260), screen)
+    cafeBoardButton = Button('cafe', design.smallFont, (0,0,0), ('#B68860'), (200,50), (300, 210), screen)
     cafeBoardExample = p.transform.smoothscale(p.image.load('assets/boards/cafe_board.png'), (55, 55))
-    checkersBoardButton = Button('checkers', design.smallFont, (0,0,0), ('#CC1817'), (200,50), (300, 340), screen)
+    checkersBoardButton = Button('checkers', design.smallFont, (0,0,0), ('#CC1817'), (200,50), (300, 290), screen)
     checkersBoardExample = p.transform.smoothscale(p.image.load('assets/boards/checkers_board.png'), (55, 55))
-    grayBoardButton = Button('gray', design.smallFont, (0,0,0), ('#202B3F'), (200,50), (300, 420), screen)
+    grayBoardButton = Button('gray', design.smallFont, (0,0,0), ('#202B3F'), (200,50), (300, 370), screen)
     grayBoardExample = p.transform.smoothscale(p.image.load('assets/boards/gray_board.png'), (55, 55))
-    forestBoardButton = Button('forest', design.smallFont, (0,0,0), ('#0B666B'), (200,50), (300, 500), screen)
+    forestBoardButton = Button('forest', design.smallFont, (0,0,0), ('#0B666B'), (200,50), (300, 450), screen)
     forestBoardExample = p.transform.smoothscale(p.image.load('assets/boards/forest_board.png'), (55, 55))
-    tangerineBoardButton = Button('tangerine', design.smallFont, (0,0,0), ('#DD6200'), (200,50), (300, 580), screen)
+    tangerineBoardButton = Button('tangerine', design.smallFont, (0,0,0), ('#DD6200'), (200,50), (300, 530), screen)
     tangerineBoardExample = p.transform.smoothscale(p.image.load('assets/boards/tangerine_board.png'), (55, 55))
     # second column of boards
-    woodBoardButton = Button('wood', design.smallFont, (0,0,0), ('#833C1F'), (200,50), (550, 100), screen)
+    woodBoardButton = Button('wood', design.smallFont, (0,0,0), ('#833C1F'), (200,50), (550, 50), screen)
     woodBoardExample = p.transform.smoothscale(p.image.load('assets/boards/wood_board.png'), (55, 55))
-    marbleBoardButton = Button('marble', design.smallFont, (0,0,0), ('#D0CDC8'), (200,50), (550, 180), screen)
+    marbleBoardButton = Button('marble', design.smallFont, (0,0,0), ('#D0CDC8'), (200,50), (550, 130), screen)
     marbleBoardExample = p.transform.smoothscale(p.image.load('assets/boards/marble_board.png'), (55, 55))
-    glassBoardButton = Button('glass', design.smallFont, (0,0,0), ('#768B96'), (200,50), (550, 260), screen)
+    glassBoardButton = Button('glass', design.smallFont, (0,0,0), ('#768B96'), (200,50), (550, 210), screen)
     glassBoardExample = p.transform.smoothscale(p.image.load('assets/boards/glass_board.png'), (55, 55))
-    onyxBoardButton = Button('onyx', design.smallFont, (0,0,0), ('#0F3044'), (200,50), (550, 340), screen)
+    onyxBoardButton = Button('onyx', design.smallFont, (0,0,0), ('#0F3044'), (200,50), (550, 290), screen)
     onyxBoardExample = p.transform.smoothscale(p.image.load('assets/boards/onyx_board.png'), (55, 55))
-    greenhouseBoardButton = Button('greenhouse', design.smallFont, (0,0,0), ('#1E3222'), (200,50), (550, 420), screen)
+    greenhouseBoardButton = Button('greenhouse', design.smallFont, (0,0,0), ('#1E3222'), (200,50), (550, 370), screen)
     greenhouseBoardExample = p.transform.smoothscale(p.image.load('assets/boards/greenhouse_board.png'), (55, 55))
-    parchmentBoardButton = Button('parchment', design.smallFont, (0,0,0), ('#DBC08D'), (200,50), (550, 500), screen)
+    parchmentBoardButton = Button('parchment', design.smallFont, (0,0,0), ('#DBC08D'), (200,50), (550, 450), screen)
     parchmentBoardExample = p.transform.smoothscale(p.image.load('assets/boards/parchment_board.png'), (55, 55))
-    sweettoothBoardButton = Button('sweettooth', design.smallFont, (0,0,0), ('#FCA6C9'), (200,50), (550, 580), screen)
+    sweettoothBoardButton = Button('sweettooth', design.smallFont, (0,0,0), ('#FCA6C9'), (200,50), (550, 530), screen)
     sweettoothBoardExample = p.transform.smoothscale(p.image.load('assets/boards/sweettooth_board.png'), (55, 55))
 
     # pva
@@ -127,7 +125,7 @@ def main():
             
             design.showPage(gamePage.page, screen)
             playButtonHome.draw()
-            keyButtonHome.draw()
+            creditButtonHome.draw()
             settingsButtonHome.draw()
 
             for event in p.event.get():
@@ -136,21 +134,21 @@ def main():
                     sys.exit()
                 elif event.type == p.MOUSEBUTTONDOWN:
                     changePage(playButtonHome, gamePage, 'pva_select')
-                    changePage(keyButtonHome, gamePage, 'key')
+                    changePage(creditButtonHome, gamePage, 'credit')
                     changePage(settingsButtonHome, gamePage, 'settings')
         
         # key game page
-        if gamePage.page == 'key':
+        if gamePage.page == 'credit':
 
-            design.showPage('key', screen)
-            backButtonKey.draw()
+            design.showPage('credit', screen)
+            backButtonCredit.draw()
 
             for event in p.event.get():
                 if event.type == p.QUIT:
                     p.quit()
                     sys.exit()
                 elif event.type == p.MOUSEBUTTONDOWN:
-                    changePage(backButtonKey, gamePage, 'home')
+                    changePage(backButtonCredit, gamePage, 'home')
 
         # settings game page
         if gamePage.page == 'settings':
@@ -159,7 +157,6 @@ def main():
             backButtonSettings.draw()
             pieceButtonSettings.draw()
             boardButtonSettings.draw()
-            backgroundButtonSettings.draw()
 
             for event in p.event.get():
                 if event.type == p.QUIT:
@@ -176,19 +173,19 @@ def main():
             design.showPage('piece', screen)
             backButtonPiece.draw()
             classicButtonPiece.draw()
-            screen.blit(classicExample, (250, 40))
+            screen.blit(classicExample, (265, 40))
             stupidButtonPiece.draw()
-            screen.blit(stupidExample, (250, 120))
+            screen.blit(stupidExample, (265, 120))
             simpleButtonPiece.draw()
-            screen.blit(simpleExample, (250, 205))
+            screen.blit(simpleExample, (265, 205))
             chaturangaButtonPiece.draw()
-            screen.blit(chaturangaExample, (250, 290))
+            screen.blit(chaturangaExample, (265, 290))
             cyberButtonPiece.draw()
-            screen.blit(cyberExample, (250, 380))
+            screen.blit(cyberExample, (265, 380))
             organicButtonPiece.draw()
-            screen.blit(organicExample, (250, 470))
+            screen.blit(organicExample, (265, 470))
             royalButtonPiece.draw()
-            screen.blit(royalExample, (250, 560))
+            screen.blit(royalExample, (265, 560))
 
 
             for event in p.event.get():
@@ -210,33 +207,33 @@ def main():
             design.showPage('board', screen)
             backButtonBoard.draw()
             classicBoardButton.draw()
-            screen.blit(classicBoardExample, (120, 70))
+            screen.blit(classicBoardExample, (120, 20))
             midnightBoardButton.draw()
-            screen.blit(midnightBoardExample, (120, 150))
+            screen.blit(midnightBoardExample, (120, 100))
             cafeBoardButton.draw()
-            screen.blit(cafeBoardExample, (120, 230))
+            screen.blit(cafeBoardExample, (120, 180))
             checkersBoardButton.draw()
-            screen.blit(checkersBoardExample, (120, 310))
+            screen.blit(checkersBoardExample, (120, 260))
             grayBoardButton.draw()
-            screen.blit(grayBoardExample, (120, 390))
+            screen.blit(grayBoardExample, (120, 340))
             forestBoardButton.draw()
-            screen.blit(forestBoardExample, (120, 470))
+            screen.blit(forestBoardExample, (120, 420))
             tangerineBoardButton.draw()
-            screen.blit(tangerineBoardExample, (120, 560))
+            screen.blit(tangerineBoardExample, (120, 510))
             woodBoardButton.draw()
-            screen.blit(woodBoardExample, (675, 70))
+            screen.blit(woodBoardExample, (675, 20))
             marbleBoardButton.draw()
-            screen.blit(marbleBoardExample, (675, 150))
+            screen.blit(marbleBoardExample, (675, 100))
             glassBoardButton.draw()
-            screen.blit(glassBoardExample, (675, 230))
+            screen.blit(glassBoardExample, (675, 180))
             onyxBoardButton.draw()
-            screen.blit(onyxBoardExample, (675, 310))
+            screen.blit(onyxBoardExample, (675, 260))
             greenhouseBoardButton.draw()
-            screen.blit(greenhouseBoardExample, (675, 390))
+            screen.blit(greenhouseBoardExample, (675, 340))
             parchmentBoardButton.draw()
-            screen.blit(parchmentBoardExample, (675, 470))
+            screen.blit(parchmentBoardExample, (675, 420))
             sweettoothBoardButton.draw()
-            screen.blit(sweettoothBoardExample, (675, 550))
+            screen.blit(sweettoothBoardExample, (675, 500))
 
 
             for event in p.event.get():

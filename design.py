@@ -12,6 +12,7 @@ class Design:
         self.color = (255,255,255)
         self.bigFont = pygame.font.Font(f'assets/font/vermin_vibes.otf', 50)
         self.smallFont = pygame.font.Font(f'assets/font/vermin_vibes.otf', 20)
+        self.mediumFont = pygame.font.Font(f'assets/font/vermin_vibes.otf', 23)
         self.setBackground('dark_bg')
 
         self.friendlyBotIcon = p.transform.smoothscale(p.image.load('assets/icons/friendly_icon.png'), (150,150))
@@ -30,6 +31,7 @@ class Design:
         self.abbyText = self.smallFont.render('Abby', True, ('#CBAC19'))
         self.abbyTextbox = p.transform.smoothscale(p.image.load('assets/icons/textboxes/abby_textbox.png'), (150,180))
         
+        self.creatorText = self.mediumFont.render('Augustine George,  Abby Steele,  Ardit Xhemajli', True, ('#9135F0'))
 
     # show functions
     def showBackground(self, surface):
@@ -74,12 +76,14 @@ class Design:
         
             
 
-        elif page == 'key':
+        elif page == 'credit':
             self.showBackground(surface)
-            self.showText(self.bigFont, 'Keybinds', 445, 100, surface)
-            self.showText(self.smallFont, 'R:  Reset Board', 445, 280, surface)
-            self.showText(self.smallFont, 'Z:  Undo Move', 445, 320, surface)
-        
+            team = p.transform.smoothscale(p.image.load('assets/icons/creators.png'), (350,350))
+            self.showText(self.bigFont, 'Creators', 445, 60, surface)
+            surface.blit(team, (275, 80))
+            #self.showText(self.smallFont, 'Augustine George,  Abby Steele,  Ardit Xhemajli', 435, 365, surface)
+            surface.blit(self.creatorText, (75, 345))
+
         elif page == 'settings':
             self.showBackground(surface)
             self.showText(self.bigFont, 'Settings', 445, 100, surface)
