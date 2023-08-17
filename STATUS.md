@@ -36,16 +36,6 @@ abby completed 8.15.23:
 - set default background to agreed upon purple + black combo
 
 
-abby 8.17.23:
-- adjusted piece buttons, board buttons -> reverted board settings back button to standard
-- play buttons for AI select now black per request
-- recolored black organic piece set
-- added team defeat icons
-- replaced key page with creator page and added basic info (will add roles, linkedin info soon)
-- redid the god-awful looking piece example images
-- provided 1 text bubble -> subject for modification
-
-
 also:
 
 

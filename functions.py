@@ -3,7 +3,6 @@ holds all game functions
 """
 from constants import *
 import pygame as p
-import sys
 
 def drawGameState(screen, gameState, validMoves, squareSelected):
     drawCustomBoard(BOARD, screen)
@@ -139,62 +138,6 @@ def animateMove(move, screen, board, clock):
         p.display.flip()
         clock.tick(60)
 
-def handleMainMenuEvents():
-   for event in p.event.get():
-       if event.type == p.QUIT:
-           p.quit()
-           sys.exit()
-       elif event.type == p.MOUSEBUTTONDOWN:
-           playButtonHome = p.Rect(150, 200, 180, 50)
-           if playButtonHome.collidepoint(event.pos):
-               return False  # Return False to indicate that we should exit the main menu
-   return True
-
-def drawMainMenu(screen):
-   
-   screen.fill(p.Color("white"))
-   font = p.font.SysFont("Arial", 28, True)
-  
-   # Play button
-   playButtonHome = p.Rect(291, 206, 180, 50)
-   p.draw.rect(screen, p.Color("green"), playButtonHome)
-   textSurface = font.render("Play", True, p.Color("white"))
-   textRect = textSurface.get_rect()
-   textRect.center = playButtonHome.center
-   screen.blit(textSurface, textRect)
-  
-   # Play with AI button
-   playAiButton = p.Rect(291, 266, 180, 50)
-   p.draw.rect(screen, p.Color("blue"), playAiButton)
-   textSurface = font.render("Play with AI", True, p.Color("white"))
-   textRect = textSurface.get_rect()
-   textRect.center = playAiButton.center
-   screen.blit(textSurface, textRect)
-  
-   # Settings button
-   settingsButtonHome = p.Rect(291, 326, 180, 50)
-   p.draw.rect(screen, p.Color("orange"), settingsButtonHome)
-   textSurface = font.render("Settings", True, p.Color("white"))
-   textRect = textSurface.get_rect()
-   textRect.center = settingsButtonHome.center
-   screen.blit(textSurface, textRect)
-  
-   p.display.flip()  # Update the display after drawing everything
-
-
-def loadImages(pieceSet):
-    """
-    Initialize a global directory of images.
-    This will be called exactly once in the main.
-    """
-    # to change pieces, rename the file to directory name
-    pieces = ['wp', 'wR', 'wN', 'wB', 'wK', 'wQ', 'bp', 'bR', 'bN', 'bB', 'bK', 'bQ']
-    for piece in pieces:
-        imagePath = f"assets/pieces/{pieceSet}/{piece}.png"
-        original_image = p.image.load(imagePath)
-        scaled_image = p.transform.smoothscale(original_image, (SQUARE_SIZE, SQUARE_SIZE))
-        IMAGES[piece] = scaled_image
-
 def resetButtonSelection(pieceButtonList, selectedButton):
     for pieceButton in pieceButtonList:
         if pieceButton != selectedButton:
@@ -212,19 +155,15 @@ def changePieceMenu(pieceButtonList, selectedButton):
     if selectedButton.checkCollision():
         resetButtonSelection(pieceButtonList, selectedButton)
         selectedButton.changeSelection()
-        if selectedButton.isSelected():
-            changePiece(selectedButton.text)
-        else:
-            changePiece('classic')
+        selectedButton.playClickSound()
+        changePiece(selectedButton.text)
 
 def changeBoardMenu(boardButtonList, selectedButton):
     if selectedButton.checkCollision():
         resetButtonSelection(boardButtonList, selectedButton)
         selectedButton.changeSelection()
-        if selectedButton.isSelected():
-            changeBoard(selectedButton.text)
-        else:
-            changeBoard('classic')
+        selectedButton.playClickSound()
+        changeBoard(selectedButton.text)
 
 def changePage(button, gamePage, page):
     if button.checkCollision():

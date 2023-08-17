@@ -15,21 +15,21 @@ class Design:
         self.mediumFont = pygame.font.Font(f'assets/font/vermin_vibes.otf', 23)
         self.setBackground('dark_bg')
 
-        self.friendlyBotIcon = p.transform.smoothscale(p.image.load('assets/icons/friendly_icon.png'), (150,150))
+        self.friendlyBotIcon = p.image.load('assets/icons/friendly_icon.png')
         self.friendlyText = self.smallFont.render('Boop Bot', True, ('#FF5F00'))
-        self.friendlyTextbox = p.transform.smoothscale(p.image.load('assets/icons/textboxes/friendly_textbox.png'), (150,180))
-        self.evilBotIcon = p.transform.smoothscale(p.image.load('assets/icons/evil_icon.png'), (150,150))
+        self.friendlyTextbox = p.image.load('assets/icons/textboxes/friendly_textbox.png')
+        self.evilBotIcon = p.image.load('assets/icons/evil_icon.png')
         self.evilText = self.smallFont.render('Beep Bot', True, ('#008C5C'))
-        self.evilTextbox = p.transform.smoothscale(p.image.load('assets/icons/textboxes/evil_textbox.png'), (150,180))
-        self.augBotIcon = p.transform.smoothscale(p.image.load('assets/icons/aug_icon.png'), (150,150))
+        self.evilTextbox = p.image.load('assets/icons/textboxes/evil_textbox.png')
+        self.augBotIcon = p.image.load('assets/icons/aug_icon.png')
         self.augText = self.smallFont.render('Augustine', True, ('#FF003B'))
-        self.augTextbox = p.transform.smoothscale(p.image.load('assets/icons/textboxes/aug_textbox.png'), (150,180))
-        self.arditBotIcon = p.transform.smoothscale(p.image.load('assets/icons/ardit_icon.png'), (150,150))
+        self.augTextbox = p.image.load('assets/icons/textboxes/aug_textbox.png')
+        self.arditBotIcon = p.image.load('assets/icons/ardit_icon.png')
         self.arditText = self.smallFont.render('Ardit', True, ('#006994'))
-        self.arditTextbox = p.transform.smoothscale(p.image.load('assets/icons/textboxes/ardit_textbox.png'), (150,180))
-        self.abbyBotIcon = p.transform.smoothscale(p.image.load('assets/icons/abby_icon.png'), (150,150))
+        self.arditTextbox = p.image.load('assets/icons/textboxes/ardit_textbox.png')
+        self.abbyBotIcon = p.image.load('assets/icons/abby_icon.png')
         self.abbyText = self.smallFont.render('Abby', True, ('#CBAC19'))
-        self.abbyTextbox = p.transform.smoothscale(p.image.load('assets/icons/textboxes/abby_textbox.png'), (150,180))
+        self.abbyTextbox = p.image.load('assets/icons/textboxes/abby_textbox.png')
         
         self.creatorText = self.mediumFont.render('Augustine George,  Abby Steele,  Ardit Xhemajli', True, ('#9135F0'))
 
@@ -49,7 +49,7 @@ class Design:
         # home page
         if page == 'home':
             self.showBackground(surface)
-            logo = p.transform.scale(p.image.load('assets/logo.png'), (100,100))
+            logo = p.image.load('assets/logo.png')
             surface.blit(logo, (400, 45))
             self.showText(self.bigFont, 'ChessNow', 445, 100, surface)
 

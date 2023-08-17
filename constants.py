@@ -18,9 +18,8 @@ def preLoadImages(pieceset):
     imageDict = {}
     for piece in pieces:
         imagePath = f"assets/pieces/{pieceset}/{piece}.png"
-        original_image = p.image.load(imagePath)
-        scaled_image = p.transform.smoothscale(original_image, (SQUARE_SIZE, SQUARE_SIZE))
-        imageDict[piece] = scaled_image
+        image = p.image.load(imagePath)
+        imageDict[piece] = image
     return imageDict
 
 CLASSIC = preLoadImages('classic')
@@ -46,5 +45,5 @@ BOARDS = {}
 
 boardList = ['abbys_fav', 'cafe', 'checkers', 'classic', 'forest', 'glass', 'gray', 'marble', 'midnight', 'onyx', 'tangerine', 'wood', 'greenhouse', 'parchment', 'sweettooth']
 for board in boardList:
-    image = p.transform.scale(p.image.load(f'assets/boards/{board}_board.png'), (BOARD_WIDTH, BOARD_HEIGHT))
+    image = p.image.load(f'assets/boards/{board}_board.png')
     BOARDS[board] = image

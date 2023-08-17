@@ -55,7 +55,7 @@ class Button:
     
     def changeSelection(self):
         self.selected = True
-    
+
     def isSelected(self):
         return self.selected
     
