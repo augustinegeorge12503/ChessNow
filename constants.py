@@ -23,7 +23,6 @@ def preLoadImages(pieceset):
         imageDict[piece] = scaled_image
     return imageDict
 
-CBURNETT = preLoadImages('cburnett')
 CLASSIC = preLoadImages('classic')
 SIMPLE = preLoadImages('simple')
 STUPID = preLoadImages('stupid')
@@ -33,7 +32,6 @@ ORGANIC = preLoadImages('organic')
 ROYAL = preLoadImages('royal')
 
 IMAGEDICT = {
-    'cburnett': CBURNETT,
     'classic': CLASSIC,
     'simple': SIMPLE,
     'stupid': STUPID,

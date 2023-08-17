@@ -1,7 +1,7 @@
 """
 holds all game functions
 """
-from Constants import *
+from constants import *
 import pygame as p
 import sys
 

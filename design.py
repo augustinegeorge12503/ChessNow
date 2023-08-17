@@ -3,7 +3,7 @@ holds information about the design of a page
 
 """
 import pygame
-from Constants import *
+from constants import *
 
 class Design:
 

@@ -1,14 +1,14 @@
 import pygame as p
-import ChessEngine
+import engine
 import sys
 from multiprocessing import Process, Queue
-from Constants import * 
-from GameFunctions import *
-from Design import Design
-from Button import Button
-from Page import Page
-from ChessBot import ChessBot
-from Sound import Sound
+from constants import * 
+from functions import *
+from design import Design
+from button import Button
+from page import Page
+from bot import ChessBot
+from sound import Sound
 
 def main():
 
@@ -16,7 +16,7 @@ def main():
     p.display.set_caption("ChessNow")
     screen = p.display.set_mode((BOARD_WIDTH + MOVELOG_PANEL_WIDTH, BOARD_HEIGHT))
     clock = p.time.Clock()
-    gameState = ChessEngine.GameState()
+    gameState = engine.GameState()
     validMoves = gameState.getValidMoves()
     moveMade = False  # flag variable for when a move is made
     animate = False  # flag variable for when we should animate a move
@@ -64,7 +64,7 @@ def main():
 
     # piece
     backButtonPiece = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150,50), (785, 600), screen)
-    classicButtonPiece = Button('classic', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 80), screen)
+    classicButtonPiece = Button('classic', design.smallFont, (0,0,0), (255,255,255), (200,50), (445, 80), screen, selected=True)
     classicExample = p.transform.smoothscale(p.image.load('assets/pieces/examples/classic_example.png'), (65,65))
     stupidButtonPiece = Button('stupid', design.smallFont, (0,0,0), (255,255,255), (200,50), (445,165), screen)
     stupidExample = p.transform.smoothscale(p.image.load('assets/pieces/examples/stupid_example.png'), (65,65))
@@ -81,7 +81,7 @@ def main():
 
 
     # boards column 1
-    classicBoardButton = Button('classic', design.smallFont, (0,0,0), ('#9135F0'), (200,50), (300, 100), screen)
+    classicBoardButton = Button('classic', design.smallFont, (0,0,0), ('#9135F0'), (200,50), (300, 100), screen, selected=True)
     classicBoardExample = p.transform.smoothscale(p.image.load('assets/boards/classic_board.png'), (55, 55))
     midnightBoardButton = Button('midnight', design.smallFont, (0,0,0), ('#11009E'), (200,50), (300, 180), screen)
     midnightBoardExample = p.transform.smoothscale(p.image.load('assets/boards/midnight_board.png'), (55, 55))
@@ -112,7 +112,7 @@ def main():
     sweettoothBoardExample = p.transform.smoothscale(p.image.load('assets/boards/sweettooth_board.png'), (55, 55))
 
     # pva
-    forefeitButtonPva = Button('Forefeit', design.smallFont, (0,0,0), (255,255,255), (240, 80), (765, 600), screen)
+    forefeitButtonPva = Button('Forefeit', design.smallFont, (0,0,0), (255,255,255), (250, 80), (765, 600), screen, square=True)
 
     # piece button list
     pieceButtonList = [classicButtonPiece, stupidButtonPiece, simpleButtonPiece, chaturangaButtonPiece, cyberButtonPiece, organicButtonPiece, royalButtonPiece]
@@ -310,7 +310,7 @@ def main():
                 elif e.type == p.MOUSEBUTTONDOWN:
                     if forefeitButtonPva.checkCollision():
                         changePage(forefeitButtonPva, gamePage, 'home')
-                        gameState = ChessEngine.GameState()
+                        gameState = engine.GameState()
                         validMoves = gameState.getValidMoves()
                         squareSelected = ()
                         playerClicks = []
@@ -333,7 +333,7 @@ def main():
                             squareSelected = (row, col)
                             playerClicks.append(squareSelected)  # append for both 1st and 2nd click
                         if len(playerClicks) == 2 and humanTurn:  # after 2nd click
-                            move = ChessEngine.Move(playerClicks[0], playerClicks[1], gameState.board)
+                            move = engine.Move(playerClicks[0], playerClicks[1], gameState.board)
                             for i in range(len(validMoves)):
                                 if move == validMoves[i]:
                                     gameState.makeMove(validMoves[i])
@@ -357,7 +357,7 @@ def main():
                             aiThinking = False
                         moveUndone = True
                     if e.key == p.K_r:  # reset the game when 'r' is pressed
-                        gameState = ChessEngine.GameState()
+                        gameState = engine.GameState()
                         validMoves = gameState.getValidMoves()
                         squareSelected = ()
                         playerClicks = []

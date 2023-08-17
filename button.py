@@ -2,11 +2,11 @@
 creates a button
 """
 import pygame
-from Sound import Sound
+from sound import Sound
 
 class Button:
 
-    def __init__(self, text, font, textColor, buttonColor, size, pos, screen) -> None:
+    def __init__(self, text, font, textColor, buttonColor, size, pos, screen, square=False, selected=False) -> None:
         
         self.text = text
         self.font = font
@@ -15,7 +15,7 @@ class Button:
         self.size = size
         self.pos = pos
         self.screen = screen
-        self.selected = False
+        self.selected = selected
 
         self.buttonRect = pygame.Rect(0,0,self.size[0], self.size[1])
         self.buttonRect.center = pos
@@ -27,6 +27,7 @@ class Button:
         self.buttonColorAbsolute = self.buttonColor
         self.textColorAbsolute = self.textColor
         self.sound = Sound('assets/sounds/click1.wav')
+        self.square = square
 
     def draw(self):
 
@@ -42,7 +43,10 @@ class Button:
             self.textColor = self.buttonColorAbsolute
                 
 
-        pygame.draw.rect(self.screen, self.buttonColor, self.buttonRect, 0, 15)
+        if not self.square:
+            pygame.draw.rect(self.screen, self.buttonColor, self.buttonRect, 0, 15)
+        else:
+            pygame.draw.rect(self.screen, self.buttonColor, self.buttonRect)
         self.textSurf = self.font.render(self.text, True, self.textColor)
         self.screen.blit(self.textSurf, self.textRect)
     
@@ -50,7 +54,7 @@ class Button:
         return self.buttonRect.collidepoint(pygame.mouse.get_pos())
     
     def changeSelection(self):
-        self.selected = not self.selected
+        self.selected = True
     
     def isSelected(self):
         return self.selected
