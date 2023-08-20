@@ -52,12 +52,13 @@ for board in boardList:
 # messages
 
 MESSAGES = {
-    'augustine': ['Do you even know how to play?', 'Such a bad move...', 'Take that!', 'I\'ve defeated Magnus!',
-                   'LOL', 'You\'ve gotta be kidding me', 'Never seen that before', 'I\'ve seen better', 'Not bad',
-                     'Could\'ve done better', 'Meh', 'This is not even a challenge', 'This is so boring'],
-    'augustineStart': 'Hello, my name is Augustine!',
-    'augustineWon': 'I\'ve Won :)',
-    'augustineLost': 'I\'ve Lost :(',
+    'augustine': ['Do you even know how to play?', 'Your moves are rook-ie', 'Take that!', 'Resign and save your dignity',
+                   'LOL', 'Did you learn chess today?', 'Your pieces need glasses', 'Your pieces need therapy', 'Knightmare moves',
+                     'Could\'ve done better', 'Castle this, buddy', 'This is not even a challenge', 'You\'re a pawn in life', 
+                    'You\'re a natural...disaster', 'Are you a secret NPC boss?', 'Give me a challenge', ],
+    'augustineStart': 'Another day, another easy mate',
+    'augustineWon': 'What did you expect?',
+    'augustineLost': 'You\'re better than I thought',
 
 
     'boop': ['Wow, not bad', 'Brilliant!', 'Take that!', 'You\'re pretty good!',

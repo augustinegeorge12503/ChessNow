@@ -15,6 +15,7 @@ class Design:
         self.smallFont = pygame.font.Font(f'assets/font/vermin_vibes.otf', 20)
         self.tinyFont = pygame.font.Font('assets/font/vermin_vibes.otf', 18)
         self.mediumFont = pygame.font.Font(f'assets/font/vermin_vibes.otf', 23)
+        self.endGameTextFont = pygame.font.Font(f'assets/font/SIXTY.TTF', 50)
         self.setBackground('dark_bg')
         self.messageFont = p.font.Font("assets/font/monofonto rg.otf", 14)
 
@@ -208,3 +209,12 @@ class Design:
         messageRect = message.get_rect()
         messageRect.center = (sideSceenRect.centerx, 200)
         screen.blit(message, messageRect)
+
+    def drawEndGameText(self, screen, text):
+        font = self.endGameTextFont
+        textObject = font.render(text, False, p.Color("gray"))
+        textLocation = p.Rect(0, 0, BOARD_WIDTH, BOARD_HEIGHT).move(BOARD_WIDTH / 2 - textObject.get_width() / 2,
+                                                                    BOARD_HEIGHT / 2 - textObject.get_height() / 2)
+        screen.blit(textObject, textLocation)
+        textObject = font.render(text, True, p.Color('red'))
+        screen.blit(textObject, textLocation.move(2, 2))

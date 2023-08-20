@@ -36,6 +36,8 @@ def main():
     moveSound = Sound('assets/sounds/move.wav')
     captureSound = Sound('assets/sounds/capture.wav')
     checkSound = Sound('assets/sounds/check.wav')
+    lostSound = Sound('assets/sounds/negative_beeps.mp3')
+    wonSound = Sound('assets/sounds/malecheer.wav')
     p.event.set_allowed([p.QUIT, p.KEYDOWN, p.MOUSEBUTTONDOWN])
 
     # initializing all buttons
@@ -411,17 +413,19 @@ def main():
 
             if gameState.checkmate:
                 if gameState.whiteToMove:
-                    drawEndGameText(screen, "Black wins by CHECKMATE")
+                    design.drawEndGameText(screen, "Black wins by CHECKMATE")
                     if not gameOver:
-                        design.drawSideScreen(screen, Bot.bot, type='Lost')
+                        design.drawSideScreen(screen, Bot.bot, type='Won')
+                        lostSound.play()
                 else:
-                    drawEndGameText(screen, "White wins by CHECKMATE")
+                    design.drawEndGameText(screen, "White wins by CHECKMATE")
                     if not gameOver:
                         design.drawSideScreen(screen, Bot.bot, type='Lost')
+                        wonSound.play()
                 gameOver = True
             elif gameState.stalemate:
                 gameOver = True
-                drawEndGameText(screen, "Stalemate")
+                design.drawEndGameText(screen, "Stalemate")
 
             if gameState.inCheck() and not checkSoundPlayed:
                 checkSound.play()

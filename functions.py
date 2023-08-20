@@ -97,15 +97,6 @@ def highlightSquares(screen, gameState, validMoves, squareSelected):
 #         screen.blit(textObject, textLocation)
 #         textY += textObject.get_height() + lineSpacing
 
-def drawEndGameText(screen, text):
-    font = p.font.SysFont("Helvetica", 32, True, False)
-    textObject = font.render(text, False, p.Color("gray"))
-    textLocation = p.Rect(0, 0, BOARD_WIDTH, BOARD_HEIGHT).move(BOARD_WIDTH / 2 - textObject.get_width() / 2,
-                                                                BOARD_HEIGHT / 2 - textObject.get_height() / 2)
-    screen.blit(textObject, textLocation)
-    textObject = font.render(text, False, p.Color('black'))
-    screen.blit(textObject, textLocation.move(2, 2))
-
 def animateMove(move, screen, board, clock):
     """
     Animating a move
