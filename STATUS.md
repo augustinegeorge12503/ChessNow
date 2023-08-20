@@ -36,6 +36,11 @@ abby completed 8.15.23:
 - set default background to agreed upon purple + black combo
 
 
+augustine completed 8.19.23:
+- Display player icon at top right
+- Show messages
+- remove movelog
+
 also:
 
 

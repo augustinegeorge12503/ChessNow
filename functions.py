@@ -68,34 +68,34 @@ def highlightSquares(screen, gameState, validMoves, squareSelected):
                 if move.startRow == row and move.startCol == col:
                     drawCircle(screen, (0, 0, 0), (move.endRow, move.endCol), 8, 50)  # Yellow circle with alpha=100
 
-def drawMoveLog(screen, gameState, font):
-    """
-    Draws the move log.
-    """
-    moveLogRect = p.Rect(BOARD_WIDTH, 0, MOVELOG_PANEL_WIDTH, MOVELOG_PANEL_HEIGHT)
-    p.draw.rect(screen, p.Color('black'), moveLogRect)
-    moveLog = gameState.moveLog
-    moveTexts = []
-    for i in range(0, len(moveLog), 2):
-        moveString = str(i // 2 + 1) + '. ' + str(moveLog[i]) + " "
-        if i + 1 < len(moveLog):
-            moveString += str(moveLog[i + 1]) + "  "
-        moveTexts.append(moveString)
+# def drawMoveLog(screen, gameState, font):
+#     """
+#     Draws the move log.
+#     """
+#     moveLogRect = p.Rect(BOARD_WIDTH, 0, MOVELOG_PANEL_WIDTH, MOVELOG_PANEL_HEIGHT)
+#     p.draw.rect(screen, p.Color('black'), moveLogRect)
+#     moveLog = gameState.moveLog
+#     moveTexts = []
+#     for i in range(0, len(moveLog), 2):
+#         moveString = str(i // 2 + 1) + '. ' + str(moveLog[i]) + " "
+#         if i + 1 < len(moveLog):
+#             moveString += str(moveLog[i + 1]) + "  "
+#         moveTexts.append(moveString)
 
-    movesPerRow = 3
-    padding = 5
-    lineSpacing = 2
-    textY = padding
-    for i in range(0, len(moveTexts), movesPerRow):
-        text = ""
-        for j in range(movesPerRow):
-            if i + j < len(moveTexts):
-                text += moveTexts[i + j]
+#     movesPerRow = 3
+#     padding = 5
+#     lineSpacing = 2
+#     textY = padding
+#     for i in range(0, len(moveTexts), movesPerRow):
+#         text = ""
+#         for j in range(movesPerRow):
+#             if i + j < len(moveTexts):
+#                 text += moveTexts[i + j]
 
-        textObject = font.render(text, True, p.Color('white'))
-        textLocation = moveLogRect.move(padding, textY)
-        screen.blit(textObject, textLocation)
-        textY += textObject.get_height() + lineSpacing
+#         textObject = font.render(text, True, p.Color('white'))
+#         textLocation = moveLogRect.move(padding, textY)
+#         screen.blit(textObject, textLocation)
+#         textY += textObject.get_height() + lineSpacing
 
 def drawEndGameText(screen, text):
     font = p.font.SysFont("Helvetica", 32, True, False)

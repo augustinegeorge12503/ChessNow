@@ -7,7 +7,7 @@ from functions import *
 from design import Design
 from button import Button
 from page import Page
-from bot import ChessBot
+from ai import ChessBot
 from sound import Sound
 
 def main():
@@ -27,7 +27,6 @@ def main():
     aiThinking = False
     moveUndone = False
     moveFinderProcess = None
-    moveLogFont = p.font.SysFont("Arial", 14, False, False)
     playerOne = True  # if a human is playing white, then this will be True, else False
     playerTwo = False  # if a human is playing white, then this will be True, else False
     gamePage = Page() # tracks the current page of game
@@ -35,6 +34,7 @@ def main():
     Bot = ChessBot() # game bot
     moveSound = Sound('assets/sounds/move.wav')
     captureSound = Sound('assets/sounds/capture.wav')
+    p.event.set_allowed([p.QUIT, p.KEYDOWN, p.MOUSEBUTTONDOWN])
 
     # initializing all buttons
     # home
@@ -118,8 +118,12 @@ def main():
                        forestBoardButton, tangerineBoardButton, woodBoardButton, marbleBoardButton, glassBoardButton, 
                        onyxBoardButton, greenhouseBoardButton, parchmentBoardButton, sweettoothBoardButton]
 
+    # flags (need to implement better)
+    pvaInitialFlag = False
+
     while True:
 
+        clock.tick(30)
         # home game page
         if gamePage.page == 'home':
             
@@ -275,10 +279,10 @@ def main():
                 elif event.type == p.MOUSEBUTTONDOWN:
                     changePage(playButtonFriendly, gamePage, 'pva')
                     if playButtonFriendly.checkCollision():
-                        Bot.assignBot('beep')
+                        Bot.assignBot('boop')
                     changePage(playButtonEvil, gamePage, 'pva')
                     if playButtonEvil.checkCollision():
-                        Bot.assignBot('boop')
+                        Bot.assignBot('beep')
                     changePage(playButtonAug, gamePage, 'pva')
                     if playButtonAug.checkCollision():
                         Bot.assignBot('augustine')
@@ -294,6 +298,10 @@ def main():
         if gamePage.page == 'pva':
 
             # draws the back button
+            if not pvaInitialFlag:
+                p.draw.rect(screen, (0,0,0), (0,0,BOARD_WIDTH + MOVELOG_PANEL_WIDTH, BOARD_HEIGHT))
+                design.drawSideScreen(screen, Bot.bot, first=True)
+                pvaInitialFlag = True
             design.showPage('pva', screen)
             forefeitButtonPva.draw()
 
@@ -318,6 +326,7 @@ def main():
                             moveFinderProcess.terminate()
                             aiThinking = False
                         moveUndone = True
+                        pvaInitialFlag = False
 
                     if not gameOver:
                         location = p.mouse.get_pos()  # (x, y) location of the mouse
@@ -365,6 +374,7 @@ def main():
                             moveFinderProcess.terminate()
                             aiThinking = False
                         moveUndone = True
+                        pvaInitialFlag = False
 
             # AI move finder
             if not gameOver and not humanTurn and not moveUndone:
@@ -380,6 +390,7 @@ def main():
                     if aiMove is None:
                         aiMove = Bot.findRandomMove(validMoves)
                     gameState.makeMove(aiMove)
+                    design.drawSideScreen(screen, Bot.bot)
                     playSound(aiMove, moveSound, captureSound)
                     moveMade = True
                     animate = True
@@ -394,19 +405,24 @@ def main():
                 moveUndone = False
 
             if not gameOver:
-                drawMoveLog(screen, gameState, moveLogFont)
+                # drawMoveLog(screen, gameState, moveLogFont)
                 drawGameState(screen, gameState, validMoves, squareSelected)
 
             if gameState.checkmate:
-                gameOver = True
                 if gameState.whiteToMove:
                     drawEndGameText(screen, "Black wins by CHECKMATE")
+                    if not gameOver:
+                        Bot.bot = Bot.bot + "Won"
+                        design.drawSideScreen(screen, Bot.bot)
                 else:
                     drawEndGameText(screen, "White wins by CHECKMATE")
+                    if not gameOver:
+                        Bot.bot = Bot.bot + "Lost"
+                        design.drawSideScreen(screen, Bot.bot)
+                gameOver = True
             elif gameState.stalemate:
                 gameOver = True
                 drawEndGameText(screen, "Stalemate")
-
         p.display.flip()
 
 if __name__ == "__main__":

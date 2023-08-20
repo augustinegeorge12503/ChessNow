@@ -4,6 +4,7 @@ holds information about the design of a page
 """
 import pygame
 from constants import *
+import random
 
 class Design:
 
@@ -14,6 +15,7 @@ class Design:
         self.smallFont = pygame.font.Font(f'assets/font/vermin_vibes.otf', 20)
         self.mediumFont = pygame.font.Font(f'assets/font/vermin_vibes.otf', 23)
         self.setBackground('dark_bg')
+        self.messageFont = p.font.SysFont("Arial", 14, False, False)
 
         self.friendlyBotIcon = p.image.load('assets/icons/friendly_icon.png')
         self.friendlyText = self.smallFont.render('Boop Bot', True, ('#FF5F00'))
@@ -30,7 +32,13 @@ class Design:
         self.abbyBotIcon = p.image.load('assets/icons/abby_icon.png')
         self.abbyText = self.smallFont.render('Abby', True, ('#CBAC19'))
         self.abbyTextbox = p.image.load('assets/icons/textboxes/abby_textbox.png')
-        
+
+        self.friendlyBotIconLost = p.image.load('assets/icons/friendly_defeat_icon.png')
+        self.evilBotIconLost = p.image.load('assets/icons/evil_defeat_icon.png')
+        self.augBotIconLost = p.image.load('assets/icons/aug_defeat_icon.png')
+        self.arditBotIconLost = p.image.load('assets/icons/ardit_defeat_icon.png')
+        self.abbyBotIconLost = p.image.load('assets/icons/abby_defeat_icon.png')
+
         self.creatorText = self.mediumFont.render('Augustine George,  Abby Steele,  Ardit Xhemajli', True, ('#9135F0'))
 
     # show functions
@@ -88,8 +96,7 @@ class Design:
             self.showBackground(surface)
             self.showText(self.bigFont, 'Settings', 445, 100, surface)
         elif page == 'pva':
-            pygame.draw.rect(surface, (255,255,255), (640,560,250,80))
-        
+            pass
         elif page == 'piece':
             self.showBackground(surface)
             pass
@@ -105,3 +112,41 @@ class Design:
         image = pygame.transform.scale(pygame.image.load(f'assets/background/{bg_name}.jpg'), (BOARD_HEIGHT + MOVELOG_PANEL_WIDTH, BOARD_HEIGHT))
         self.background = image        
     
+    def drawSideScreen(self, screen, imageName, first=False):
+
+        sideSceenRect = p.Rect(BOARD_WIDTH, 0, MOVELOG_PANEL_WIDTH, MOVELOG_PANEL_HEIGHT)
+        p.draw.rect(screen, p.Color('black'), sideSceenRect)
+        if imageName == 'boop' or imageName == 'boopWon':
+            screen.blit(self.friendlyBotIcon, (690, 10))
+        elif imageName == 'beep' or imageName == 'beepWon':
+            screen.blit(self.evilBotIcon, (690, 10))
+        elif imageName == 'augustine' or imageName == 'augustineWon':
+            screen.blit(self.augBotIcon, (690, 10))
+        elif imageName == 'ardit' or imageName == 'arditWon':
+            screen.blit(self.arditBotIcon, (690, 10))
+        elif imageName == 'abby' or imageName == 'abbyWon':
+            screen.blit(self.abbyBotIcon, (690, 10))
+        elif imageName == 'boopLost':
+            screen.blit(self.friendlyBotIconLost, (690, 10))
+        elif imageName == 'beepLost':
+            screen.blit(self.evilBotIconLost, (690, 10))
+        elif imageName == 'augustineLost':
+            screen.blit(self.augBotIconLost, (690, 10))
+        elif imageName == 'arditLost':
+            screen.blit(self.arditBotIconLost, (690, 10))
+        elif imageName == 'abbyLost':
+            screen.blit(self.abbyBotIconLost, (690, 10))
+        
+        if not first:
+            messageText = random.choice(MESSAGES[imageName]) if isinstance(MESSAGES[imageName], list) else MESSAGES[imageName]
+            message = self.messageFont.render(messageText, True, (255,255,255))
+            messageRect = message.get_rect()
+            messageRect.center = (sideSceenRect.centerx, 200)
+            screen.blit(message, messageRect)
+        else:
+            messageText = MESSAGES[f'{imageName}Start']
+            message = self.messageFont.render(messageText, True, (255,255,255))
+            messageRect = message.get_rect()
+            messageRect.center = (sideSceenRect.centerx, 200)
+            screen.blit(message, messageRect)
+        
