@@ -52,39 +52,42 @@ for board in boardList:
 # messages
 
 MESSAGES = {
-    'augustine': ['Do you even know How to play?', 'That is such a bad move', 'Take that!', 'I\'ve defeated Magnus!',
+    'augustine': ['Do you even know how to play?', 'Such a bad move...', 'Take that!', 'I\'ve defeated Magnus!',
                    'LOL', 'You\'ve gotta be kidding me', 'Never seen that before', 'I\'ve seen better', 'Not bad',
                      'Could\'ve done better', 'Meh', 'This is not even a challenge', 'This is so boring'],
     'augustineStart': 'Hello, my name is Augustine!',
     'augustineWon': 'I\'ve Won :)',
     'augustineLost': 'I\'ve Lost :(',
 
-    # add every other bots' messages. Edit mine too if you can cus i'm bad at this stuff :(
+
     'boop': ['Wow, not bad', 'Brilliant!', 'Take that!', 'You\'re pretty good!',
-                   'Are you sure about that?', 'Is that supposed to be a joke?', 'Good move', 'Great move!',
-                     'You may want to take that move back...'],
-    'boopStart': 'I am BOOP!',
+                   'Are you sure about that?', 'Good move', 'Great move!',
+                     'That\'s interesting!', '...Sorry!', 'Have you met BEEP? Scary...', 'Let\'s have a great game'],
+    'boopStart': 'I am BOOP! Hi friend!',
     'boopWon': 'Good try!',
     'boopLost': 'You\'ve beaten me! Impressive!',
-        # put these in as place holders:
-    'beep': ['Wow, not bad', 'Brilliant!', 'Take that!', 'You\'re pretty good!',
-                   'Are you sure about that?', 'Is that supposed to be a joke?', 'Good move', 'Great move!',
-                     'You may want to take that move back...'],
-    'beepStart': 'I am Beep. Good luck. You\'ll need it..',
-    'beepWon': 'Yes, yes. Everything is going to plan.',
-    'beepLost': 'But..But..How?!',
+
+
+    'beep': ['I am not amused...', 'Do all humans play like this?', 
+             'Why do you waste my time?', 'Don\'t quit your day job.', 'You\'re the reason we have BOOP.', 'How cute.'],
+    'beepStart': 'I am the all-powerful BEEP!',
+    'beepWon': 'All according to my programming.',
+    'beepLost': 'You\'ll regret this, human!',
+
 
     'ardit': ['Wow, not bad', 'Brilliant!', 'Take that!', 'You\'re pretty good!',
                    'Are you sure about that?', 'Is that supposed to be a joke?', 'Good move', 'Great move!',
-                     'You may want to take that move back...'],
+                     'You may want to take that back...'],
     'arditStart': 'Hello, my name is Ardit!',
     'arditWon': 'I win!',
     'arditLost': 'Wow. I can\'t believe this.',
-    # put these in as place holders:
-    'abby': ['Wow, not bad', 'Brilliant!', 'Take that!', 'You\'re pretty good!',
-                   'Are you sure about that?', 'Is that supposed to be a joke?', 'Good move', 'Great move!',
-                     'You may want to take that move back...'],
-    'abbyStart': 'Hello, my name is Abby!',
-    'abbyWon': 'I win!',
-    'abbyLost': 'Wow. I can\'t believe this.'
+
+
+    'abby': ['It\'s okay, you\'re still learning!', 
+             'My friend played a move like that once! They lost.', 'Exciting!', 'Are you trying to lose?', 
+             'I\'ve seen this line before...', 'Hurry up and lose already!', 'Resigning is always an option.',
+             'Oh. You\'re still playing?', 'Don\'t be shy - I don\'t bite!', 'Quite bold.'],
+    'abbyStart': 'Will you give me a good game?',
+    'abbyWon': 'As expected.',
+    'abbyLost': '@#?$%! I mean - good game.'
 }

@@ -29,7 +29,7 @@ def main():
     moveFinderProcess = None
     checkSoundPlayed = False
     playerOne = True  # if a human is playing white, then this will be True, else False
-    playerTwo = False  # if a human is playing white, then this will be True, else False
+    playerTwo = False
     gamePage = Page() # tracks the current page of game
     design = Design() # display the design of a page
     Bot = ChessBot() # game bot
@@ -95,7 +95,7 @@ def main():
     forestBoardExample = p.transform.smoothscale(BOARDS['forest'], (55,55))
     tangerineBoardButton = Button('tangerine', design.smallFont, (0,0,0), ('#DD6200'), (200,50), (300, 530), screen)
     tangerineBoardExample = p.transform.smoothscale(BOARDS['tangerine'], (55,55))
-    # second column of boards
+    # boards column 2
     woodBoardButton = Button('wood', design.smallFont, (0,0,0), ('#833C1F'), (200,50), (550, 50), screen)
     woodBoardExample = p.transform.smoothscale(BOARDS['wood'], (55,55))
     marbleBoardButton = Button('marble', design.smallFont, (0,0,0), ('#D0CDC8'), (200,50), (550, 130), screen)
@@ -248,7 +248,6 @@ def main():
                     sys.exit()
                 elif event.type == p.MOUSEBUTTONDOWN:
                     changePage(backButtonBoard, gamePage, 'settings')
-                    # these below are not functioning yet
                     changeBoardMenu(boardButtonList, classicBoardButton)
                     changeBoardMenu(boardButtonList, midnightBoardButton)
                     changeBoardMenu(boardButtonList, cafeBoardButton)
