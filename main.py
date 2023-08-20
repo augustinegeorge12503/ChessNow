@@ -300,7 +300,7 @@ def main():
             # draws the back button
             if not pvaInitialFlag:
                 p.draw.rect(screen, (0,0,0), (0,0,BOARD_WIDTH + MOVELOG_PANEL_WIDTH, BOARD_HEIGHT))
-                design.drawSideScreen(screen, Bot.bot, first=True)
+                design.drawSideScreen(screen, Bot.bot, type='Start')
                 pvaInitialFlag = True
             design.showPage('pva', screen)
             forefeitButtonPva.draw()
@@ -412,13 +412,11 @@ def main():
                 if gameState.whiteToMove:
                     drawEndGameText(screen, "Black wins by CHECKMATE")
                     if not gameOver:
-                        Bot.bot = Bot.bot + "Won"
-                        design.drawSideScreen(screen, Bot.bot)
+                        design.drawSideScreen(screen, Bot.bot, type='Lost')
                 else:
                     drawEndGameText(screen, "White wins by CHECKMATE")
                     if not gameOver:
-                        Bot.bot = Bot.bot + "Lost"
-                        design.drawSideScreen(screen, Bot.bot)
+                        design.drawSideScreen(screen, Bot.bot, type='Lost')
                 gameOver = True
             elif gameState.stalemate:
                 gameOver = True

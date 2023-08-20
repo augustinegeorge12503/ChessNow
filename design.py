@@ -41,6 +41,23 @@ class Design:
 
         self.creatorText = self.mediumFont.render('Augustine George,  Abby Steele,  Ardit Xhemajli', True, ('#9135F0'))
 
+        self.iconDict = {
+            'boop': self.friendlyBotIcon,
+            'boopLost': self.friendlyBotIconLost,
+
+            'beep': self.evilBotIcon,
+            'beepLost': self.evilBotIconLost,
+
+            'augustine': self.augBotIcon,
+            'augustineLost': self.augBotIconLost,
+
+            'ardit': self.arditBotIcon,
+            'arditLost': self.arditBotIconLost,
+
+            'abby': self.abbyBotIcon,
+            'abbyLost': self.abbyBotIconLost,
+        }
+
     # show functions
     def showBackground(self, surface):
         surface.blit(self.background, (0,0))
@@ -112,41 +129,17 @@ class Design:
         image = pygame.transform.scale(pygame.image.load(f'assets/background/{bg_name}.jpg'), (BOARD_HEIGHT + MOVELOG_PANEL_WIDTH, BOARD_HEIGHT))
         self.background = image        
     
-    def drawSideScreen(self, screen, imageName, first=False):
+    def drawSideScreen(self, screen, imageName, type=''):
 
         sideSceenRect = p.Rect(BOARD_WIDTH, 0, MOVELOG_PANEL_WIDTH, MOVELOG_PANEL_HEIGHT)
         p.draw.rect(screen, p.Color('black'), sideSceenRect)
-        if imageName == 'boop' or imageName == 'boopWon':
-            screen.blit(self.friendlyBotIcon, (690, 10))
-        elif imageName == 'beep' or imageName == 'beepWon':
-            screen.blit(self.evilBotIcon, (690, 10))
-        elif imageName == 'augustine' or imageName == 'augustineWon':
-            screen.blit(self.augBotIcon, (690, 10))
-        elif imageName == 'ardit' or imageName == 'arditWon':
-            screen.blit(self.arditBotIcon, (690, 10))
-        elif imageName == 'abby' or imageName == 'abbyWon':
-            screen.blit(self.abbyBotIcon, (690, 10))
-        elif imageName == 'boopLost':
-            screen.blit(self.friendlyBotIconLost, (690, 10))
-        elif imageName == 'beepLost':
-            screen.blit(self.evilBotIconLost, (690, 10))
-        elif imageName == 'augustineLost':
-            screen.blit(self.augBotIconLost, (690, 10))
-        elif imageName == 'arditLost':
-            screen.blit(self.arditBotIconLost, (690, 10))
-        elif imageName == 'abbyLost':
-            screen.blit(self.abbyBotIconLost, (690, 10))
-        
-        if not first:
-            messageText = random.choice(MESSAGES[imageName]) if isinstance(MESSAGES[imageName], list) else MESSAGES[imageName]
-            message = self.messageFont.render(messageText, True, (255,255,255))
-            messageRect = message.get_rect()
-            messageRect.center = (sideSceenRect.centerx, 200)
-            screen.blit(message, messageRect)
+        if type == 'Lost':
+            screen.blit(self.iconDict[f'{imageName}{type}'], (690, 10))
         else:
-            messageText = MESSAGES[f'{imageName}Start']
-            message = self.messageFont.render(messageText, True, (255,255,255))
-            messageRect = message.get_rect()
-            messageRect.center = (sideSceenRect.centerx, 200)
-            screen.blit(message, messageRect)
+            screen.blit(self.iconDict[f'{imageName}'], (690, 10))
         
+        messageText = random.choice(MESSAGES[f'{imageName}{type}']) if isinstance(MESSAGES[f'{imageName}{type}'], list) else MESSAGES[f'{imageName}{type}']
+        message = self.messageFont.render(messageText, True, (255,255,255))
+        messageRect = message.get_rect()
+        messageRect.center = (sideSceenRect.centerx, 200)
+        screen.blit(message, messageRect)
