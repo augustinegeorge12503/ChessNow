@@ -60,23 +60,31 @@ MESSAGES = {
     'augustineLost': 'I\'ve Lost :(',
 
     # add every other bots' messages. Edit mine too if you can cus i'm bad at this stuff :(
-    'boop': [''],
+    'boop': ['Wow, not bad', 'Brilliant!', 'Take that!', 'You\'re pretty good!',
+                   'Are you sure about that?', 'Is that supposed to be a joke?', 'Good move', 'Great move!',
+                     'You may want to take that move back...'],
     'boopStart': 'I am BOOP!',
-    'boopWon': '',
-    'boopLost': '',
+    'boopWon': 'Good try!',
+    'boopLost': 'You\'ve beaten me! Impressive!',
+        # put these in as place holders:
+    'beep': ['Wow, not bad', 'Brilliant!', 'Take that!', 'You\'re pretty good!',
+                   'Are you sure about that?', 'Is that supposed to be a joke?', 'Good move', 'Great move!',
+                     'You may want to take that move back...'],
+    'beepStart': 'I am Beep. Good luck. You\'ll need it..',
+    'beepWon': 'Yes, yes. Everything is going to plan.',
+    'beepLost': 'But..But..How?!',
 
-    'beep': [''],
-    'beepStart': 'I am BEEP!',
-    'beepWon': '',
-    'beepLost': '',
-
-    'ardit': [''],
+    'ardit': ['Wow, not bad', 'Brilliant!', 'Take that!', 'You\'re pretty good!',
+                   'Are you sure about that?', 'Is that supposed to be a joke?', 'Good move', 'Great move!',
+                     'You may want to take that move back...'],
     'arditStart': 'Hello, my name is Ardit!',
-    'arditWon': '',
-    'arditLost': '',
-
-    'abby': [''],
+    'arditWon': 'I win!',
+    'arditLost': 'Wow. I can\'t believe this.',
+    # put these in as place holders:
+    'abby': ['Wow, not bad', 'Brilliant!', 'Take that!', 'You\'re pretty good!',
+                   'Are you sure about that?', 'Is that supposed to be a joke?', 'Good move', 'Great move!',
+                     'You may want to take that move back...'],
     'abbyStart': 'Hello, my name is Abby!',
-    'abbyWon': '',
-    'abbyLost': ''
+    'abbyWon': 'I win!',
+    'abbyLost': 'Wow. I can\'t believe this.'
 }

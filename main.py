@@ -27,6 +27,7 @@ def main():
     aiThinking = False
     moveUndone = False
     moveFinderProcess = None
+    checkSoundPlayed = False
     playerOne = True  # if a human is playing white, then this will be True, else False
     playerTwo = False  # if a human is playing white, then this will be True, else False
     gamePage = Page() # tracks the current page of game
@@ -34,6 +35,7 @@ def main():
     Bot = ChessBot() # game bot
     moveSound = Sound('assets/sounds/move.wav')
     captureSound = Sound('assets/sounds/capture.wav')
+    checkSound = Sound('assets/sounds/check.wav')
     p.event.set_allowed([p.QUIT, p.KEYDOWN, p.MOUSEBUTTONDOWN])
 
     # initializing all buttons
@@ -423,7 +425,13 @@ def main():
             elif gameState.stalemate:
                 gameOver = True
                 drawEndGameText(screen, "Stalemate")
-        p.display.flip()
 
+            if gameState.inCheck() and not checkSoundPlayed:
+                checkSound.play()
+                checkSoundPlayed = True
+            elif not gameState.inCheck():
+                checkSoundPlayed = False
+        p.display.flip()
+        
 if __name__ == "__main__":
     main()
