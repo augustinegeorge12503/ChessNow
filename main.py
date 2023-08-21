@@ -38,6 +38,7 @@ def main():
     checkSound = Sound('assets/sounds/check.wav')
     lostSound = Sound('assets/sounds/negative_beeps.mp3')
     wonSound = Sound('assets/sounds/malecheer.wav')
+    startSound = Sound('assets/sounds/click3.wav')
     p.event.set_allowed([p.QUIT, p.KEYDOWN, p.MOUSEBUTTONDOWN])
 
     # initializing all buttons
@@ -305,6 +306,7 @@ def main():
                 p.draw.rect(screen, (0,0,0), (0,0,BOARD_WIDTH + MOVELOG_PANEL_WIDTH, BOARD_HEIGHT))
                 design.drawSideScreen(screen, Bot.bot, type='Start')
                 pvaInitialFlag = True
+                startSound.play()
             design.showPage('pva', screen)
             forefeitButtonPva.draw()
 
