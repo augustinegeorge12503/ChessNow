@@ -77,6 +77,10 @@ class Design:
 
         self.linkedInLabel = self.mediumFont.render('Connect with us', True, ('#ffffff'))
 
+        self.endGameBox = pygame.image.load('assets/gameEndBox.png').convert()
+        self.textBox = pygame.transform.smoothscale(pygame.image.load('assets/textbox.png'), (245, 90)).convert
+        self.sideScreenBg = pygame.image.load('assets/sideScreenBg.png').convert()
+
         self.iconDict = {
             'boop': self.friendlyBotIcon,
             'boopLost': self.friendlyBotIconLost,
@@ -198,19 +202,22 @@ class Design:
     def drawSideScreen(self, screen, imageName, type=''):
 
         sideSceenRect = p.Rect(BOARD_WIDTH, 0, MOVELOG_PANEL_WIDTH, MOVELOG_PANEL_HEIGHT)
-        p.draw.rect(screen, p.Color('black'), sideSceenRect)
+        screen.blit(self.sideScreenBg, (640, 0))
+        screen.blit(self.textBox, (645, 160))
         if type == 'Lost':
             screen.blit(self.iconDict[f'{imageName}{type}'], (690, 10))
         else:
             screen.blit(self.iconDict[f'{imageName}'], (690, 10))
         
         messageText = random.choice(MESSAGES[f'{imageName}{type}']) if isinstance(MESSAGES[f'{imageName}{type}'], list) else MESSAGES[f'{imageName}{type}']
-        message = self.messageFont.render(messageText, True, (255,255,255))
+        message = self.messageFont.render(messageText, True, (0,0,0))
         messageRect = message.get_rect()
         messageRect.center = (sideSceenRect.centerx, 200)
         screen.blit(message, messageRect)
 
     def drawEndGameText(self, screen, text):
+
+        screen.blit(self.endGameBox, (10,55))
         font = self.endGameTextFont
         textObject = font.render(text, False, p.Color("gray"))
         textLocation = p.Rect(0, 0, BOARD_WIDTH, BOARD_HEIGHT).move(BOARD_WIDTH / 2 - textObject.get_width() / 2,
