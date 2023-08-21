@@ -78,7 +78,7 @@ class Design:
         self.linkedInLabel = self.mediumFont.render('Connect with us', True, ('#ffffff'))
 
         self.endGameBox = pygame.image.load('assets/gameEndBox.png').convert_alpha()
-        self.textBox = pygame.transform.smoothscale(pygame.image.load('assets/textbox.png'), (245, 90)).convert_alpha()
+        self.textBox = pygame.transform.smoothscale(pygame.image.load('assets/textbox.png'), (250, 90)).convert_alpha()
         self.sideScreenBg = pygame.image.load('assets/sideScreenBg.png').convert_alpha()
 
         # example images
@@ -205,7 +205,7 @@ class Design:
 
         sideSceenRect = p.Rect(BOARD_WIDTH, 0, MOVELOG_PANEL_WIDTH, MOVELOG_PANEL_HEIGHT)
         screen.blit(self.sideScreenBg, (640, 0))
-        screen.blit(self.textBox, (645, 160))
+        screen.blit(self.textBox, (640, 160))
         if type == 'Lost':
             screen.blit(self.iconDict[f'{imageName}{type}'], (690, 10))
         else:
