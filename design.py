@@ -19,49 +19,49 @@ class Design:
         self.setBackground('dark_bg')
         self.messageFont = p.font.Font("assets/font/monofonto rg.otf", 14)
 
-        self.friendlyBotIcon = p.image.load('assets/icons/friendly_icon.png')
+        self.friendlyBotIcon = p.image.load('assets/icons/friendly_icon.png').convert_alpha()
         self.friendlyText = self.smallFont.render('Boop Bot', True, ('#FF5F00'))
-        self.friendlyTextbox = p.image.load('assets/icons/textboxes/friendly_textbox.png')
+        self.friendlyTextbox = p.image.load('assets/icons/textboxes/friendly_textbox.png').convert_alpha()
         self.friendlyBotDescribe1 = self.messageFont.render('Boop doesn\'t', True, ('#803000'))
         self.friendlyBotDescribe2 = self.messageFont.render('need to win.', True, ('#803000'))
         self.friendlyBotDescribe3 = self.messageFont.render('He\'s just', True, ('#803000'))
         self.friendlyBotDescribe4 = self.messageFont.render('happy to play.', True, ('#803000'))
         
-        self.evilBotIcon = p.image.load('assets/icons/evil_icon.png')
+        self.evilBotIcon = p.image.load('assets/icons/evil_icon.png').convert_alpha()
         self.evilText = self.smallFont.render('Beep Bot', True, ('#008C5C'))
-        self.evilTextbox = p.image.load('assets/icons/textboxes/evil_textbox.png')
+        self.evilTextbox = p.image.load('assets/icons/textboxes/evil_textbox.png').convert_alpha()
         self.evilBotDescribe1 = self.messageFont.render('Two words.', True, ('#003825'))
         self.evilBotDescribe2 = self.messageFont.render('Humans, beware.', True, ('#003825'))
         
-        self.augBotIcon = p.image.load('assets/icons/aug_icon.png')
+        self.augBotIcon = p.image.load('assets/icons/aug_icon.png').convert_alpha()
         self.augText = self.smallFont.render('Augustine', True, ('#FF003B'))
-        self.augTextbox = p.image.load('assets/icons/textboxes/aug_textbox.png')
+        self.augTextbox = p.image.load('assets/icons/textboxes/aug_textbox.png').convert_alpha()
         self.augBotDescribe1 = self.messageFont.render('Augustine is', True, ('#470010'))
         self.augBotDescribe2 = self.messageFont.render('an attacker,', True, ('#470010'))
         self.augBotDescribe3 = self.messageFont.render('keep your', True, ('#470010'))
         self.augBotDescribe4 = self.messageFont.render('guard up.', True, ('#470010'))
         
-        self.arditBotIcon = p.image.load('assets/icons/ardit_icon.png')
+        self.arditBotIcon = p.image.load('assets/icons/ardit_icon.png').convert_alpha()
         self.arditText = self.smallFont.render('Ardit', True, ('#006994'))
-        self.arditTextbox = p.image.load('assets/icons/textboxes/ardit_textbox.png')
+        self.arditTextbox = p.image.load('assets/icons/textboxes/ardit_textbox.png').convert_alpha()
         self.arditBotDescribe1 = self.messageFont.render('Ardit defends,', True, ('#003347'))
         self.arditBotDescribe2 = self.messageFont.render('should you do', True, ('#003347'))
         self.arditBotDescribe3 = self.messageFont.render('the same?', True, ('#003347'))
         
-        self.abbyBotIcon = p.image.load('assets/icons/abby_icon.png')
+        self.abbyBotIcon = p.image.load('assets/icons/abby_icon.png').convert_alpha()
         self.abbyText = self.smallFont.render('Abby', True, ('#CBAC19'))
         self.abbyBotDescribe1 = self.messageFont.render('Abby is a', True, ('#443A08'))
         self.abbyBotDescribe2 = self.messageFont.render('positional player.', True, ('#443A08'))
         self.abbyBotDescribe3 = self.messageFont.render('Place your', True, ('#443A08'))
         self.abbyBotDescribe4 = self.messageFont.render('pieces wisely.', True, ('#443A08'))
-        self.abbyTextbox = p.image.load('assets/icons/textboxes/abby_textbox.png')
+        self.abbyTextbox = p.image.load('assets/icons/textboxes/abby_textbox.png').convert_alpha()
 
 
-        self.friendlyBotIconLost = p.image.load('assets/icons/friendly_defeat_icon.png')
-        self.evilBotIconLost = p.image.load('assets/icons/evil_defeat_icon.png')
-        self.augBotIconLost = p.image.load('assets/icons/aug_defeat_icon.png')
-        self.arditBotIconLost = p.image.load('assets/icons/ardit_defeat_icon.png')
-        self.abbyBotIconLost = p.image.load('assets/icons/abby_defeat_icon.png')
+        self.friendlyBotIconLost = p.image.load('assets/icons/friendly_defeat_icon.png').convert_alpha()
+        self.evilBotIconLost = p.image.load('assets/icons/evil_defeat_icon.png').convert_alpha()
+        self.augBotIconLost = p.image.load('assets/icons/aug_defeat_icon.png').convert_alpha()
+        self.arditBotIconLost = p.image.load('assets/icons/ardit_defeat_icon.png').convert_alpha()
+        self.abbyBotIconLost = p.image.load('assets/icons/abby_defeat_icon.png').convert_alpha()
 
 
         self.creatorAugText = self.mediumFont.render('Augustine George', True, ('#C195E4'))
@@ -77,9 +77,11 @@ class Design:
 
         self.linkedInLabel = self.mediumFont.render('Connect with us', True, ('#ffffff'))
 
-        self.endGameBox = pygame.image.load('assets/gameEndBox.png').convert()
-        self.textBox = pygame.transform.smoothscale(pygame.image.load('assets/textbox.png'), (245, 90)).convert
-        self.sideScreenBg = pygame.image.load('assets/sideScreenBg.png').convert()
+        self.endGameBox = pygame.image.load('assets/gameEndBox.png').convert_alpha()
+        self.textBox = pygame.transform.smoothscale(pygame.image.load('assets/textbox.png'), (245, 90)).convert_alpha()
+        self.sideScreenBg = pygame.image.load('assets/sideScreenBg.png').convert_alpha()
+
+        # example images
 
         self.iconDict = {
             'boop': self.friendlyBotIcon,

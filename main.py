@@ -68,19 +68,19 @@ def main():
     # piece
     backButtonPiece = Button('Back', design.smallFont, (0,0,0), (255,255,255), (150,50), (785, 600), screen)
     classicButtonPiece = Button('classic', design.smallFont, (0,0,0), (255,255,255), (200,50), (495, 80), screen, selected=True)
-    classicExample = p.image.load('assets/pieces/examples/classic_example.png')
+    classicExample = p.image.load('assets/pieces/examples/classic_example.png').convert_alpha()
     stupidButtonPiece = Button('stupid', design.smallFont, (0,0,0), (255,255,255), (200,50), (495,165), screen)
-    stupidExample = p.image.load('assets/pieces/examples/stupid_example.png')
+    stupidExample = p.image.load('assets/pieces/examples/stupid_example.png').convert_alpha()
     simpleButtonPiece = Button('simple', design.smallFont, (0,0,0), (255,255,255), (200,50), (495, 250), screen)
-    simpleExample = p.image.load('assets/pieces/examples/simple_example.png')
+    simpleExample = p.image.load('assets/pieces/examples/simple_example.png').convert_alpha()
     chaturangaButtonPiece = Button('chaturanga', design.smallFont, (0,0,0), (255,255,255), (200,50), (495, 335), screen)
-    chaturangaExample = p.image.load('assets/pieces/examples/chat_example.png')
+    chaturangaExample = p.image.load('assets/pieces/examples/chat_example.png').convert_alpha()
     cyberButtonPiece = Button('cyber', design.smallFont, (0,0,0), (255,255,255), (200,50), (495, 420), screen)
-    cyberExample = p.image.load('assets/pieces/examples/cyber_example.png')
+    cyberExample = p.image.load('assets/pieces/examples/cyber_example.png').convert_alpha()
     organicButtonPiece = Button('organic', design.smallFont, (0,0,0), (255,255,255), (200,50), (495, 505), screen)
-    organicExample = p.image.load('assets/pieces/examples/organic_example.png')
+    organicExample = p.image.load('assets/pieces/examples/organic_example.png').convert_alpha()
     royalButtonPiece = Button('royal', design.smallFont, (0,0,0), (255,255,255), (200,50), (495, 590), screen)
-    royalExample = p.image.load('assets/pieces/examples/royal_example.png')
+    royalExample = p.image.load('assets/pieces/examples/royal_example.png').convert_alpha()
 
 
     # boards column 1
