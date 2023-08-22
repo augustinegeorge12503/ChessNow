@@ -15,7 +15,7 @@ class Design:
         self.smallFont = pygame.font.Font(f'assets/font/vermin_vibes.otf', 20)
         self.tinyFont = pygame.font.Font('assets/font/vermin_vibes.otf', 18)
         self.mediumFont = pygame.font.Font(f'assets/font/vermin_vibes.otf', 23)
-        self.endGameTextFont = pygame.font.Font(f'assets/font/SIXTY.TTF', 50)
+        self.endGameTextFont = pygame.font.Font(f'assets/font/monofonto rg.otf', 45)
         self.setBackground('dark_bg')
         self.messageFont = p.font.Font("assets/font/monofonto rg.otf", 14)
 
