@@ -84,8 +84,7 @@ MESSAGES = {
     'arditLost': 'Wow. I can\'t believe this.',
 
 
-    'abby': ['It\'s okay, you\'re still learning!', 
-             'My friend played a move like that once! They lost.', 'Exciting!', 'Are you trying to lose?', 
+    'abby': ['It\'s okay, you\'re still learning!', 'Exciting!', 'Are you trying to lose?', 
              'I\'ve seen this line before...', 'Hurry up and lose already!', 'Resigning is always an option.',
              'Oh. You\'re still playing?', 'Don\'t be shy - I don\'t bite!', 'Quite bold.'],
     'abbyStart': 'Will you give me a good game?',

@@ -36,9 +36,10 @@ def main():
     moveSound = Sound('assets/sounds/move.wav')
     captureSound = Sound('assets/sounds/capture.wav')
     checkSound = Sound('assets/sounds/check.wav')
-    lostSound = Sound('assets/sounds/negative_beeps.mp3')
-    wonSound = Sound('assets/sounds/malecheer.wav')
+    lostSound = Sound('assets/sounds/defeat.wav')
+    wonSound = Sound('assets/sounds/victory.wav')
     startSound = Sound('assets/sounds/click3.wav')
+    castleSound = Sound('assets/sounds/castle.wav')
     p.event.set_allowed([p.QUIT, p.KEYDOWN, p.MOUSEBUTTONDOWN])
 
     # initializing all buttons
@@ -428,6 +429,8 @@ def main():
             elif gameState.stalemate:
                 gameOver = True
                 design.drawEndGameText(screen, "Stalemate")
+                # not technically lost, but still not good outcome so play:
+                lostSound.play()
 
             if gameState.inCheck() and not checkSoundPlayed:
                 checkSound.play()

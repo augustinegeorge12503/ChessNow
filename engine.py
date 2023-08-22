@@ -27,7 +27,7 @@ class GameState:
         self.moveLog = []
         self.whiteKingLocation = (7, 4)
         self.blackKingLocation = (0, 4)
-        self.checkmate = False
+        self.checkmate = True
         self.stalemate = False
         self.incheck = False
         self.pins = []
