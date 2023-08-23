@@ -53,8 +53,8 @@ for board in boardList:
 
 MESSAGES = {
     'augustine': ['Do you even know how to play?', 'Your moves are rook-ie', 'Take that!', 'Resign and save your dignity',
-                   'LOL', 'Did you learn chess today?', 'Your pieces need glasses', 'Your pieces need therapy', 'Knightmare moves',
-                     'Could\'ve done better', 'Castle this, buddy', 'This is not even a challenge', 'You\'re a pawn in life', 
+                   'LOL', 'Did you learn chess today?', 'Your pieces need glasses', 'Knightmare moves',
+                     'Could\'ve done better', 'Castle this, buddy', 'This is not even a challenge',
                     'You\'re a natural...disaster', 'Are you a secret NPC boss?', 'Give me a challenge', ],
     'augustineStart': 'Another day, another easy mate',
     'augustineWon': 'What did you expect?',
