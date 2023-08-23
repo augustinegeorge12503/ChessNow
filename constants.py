@@ -76,10 +76,10 @@ MESSAGES = {
     'beepLost': 'You\'ll regret this, human!',
 
 
-    'ardit': ['Wow, not bad', 'Brilliant!', 'Take that!', 'You\'re pretty good!',
-                   'Are you sure about that?', 'Is that supposed to be a joke?', 'Good move', 'Great move!',
-                     'You may want to take that back...'],
-    'arditStart': 'Hello, my name is Ardit!',
+    'ardit': ['This is fun.', '', 'Interesting...!', 'Hm....',
+                   'This is going great!', 'Are you winning?', 'This is harder than I thought!', 'I think i\'m winning now',
+                     'Wow','Every move counts','Ready for a checkmate?'],
+    'arditStart': 'Hello, my name is Ardit!''Take that!',
     'arditWon': 'I win!',
     'arditLost': 'Wow. I can\'t believe this.',
 
