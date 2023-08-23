@@ -349,7 +349,10 @@ def main():
                             for i in range(len(validMoves)):
                                 if move == validMoves[i]:
                                     gameState.makeMove(validMoves[i])
-                                    playSound(move, moveSound, captureSound)
+                                    if validMoves[i].isCastleMove:
+                                        castleSound.play()
+                                    else:
+                                        playSound(move, moveSound, captureSound)
                                     moveMade = True
                                     animate = True
                                     squareSelected = ()  # reset user clicks
