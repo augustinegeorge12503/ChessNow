@@ -81,6 +81,9 @@ class Design:
         self.textBox = pygame.transform.smoothscale(pygame.image.load('assets/textbox.png'), (250, 90)).convert_alpha()
         self.sideScreenBg = pygame.image.load('assets/sideScreenBg.png').convert_alpha()
 
+        self.QRCode = pygame.transform.scale(pygame.image.load('assets/QR.png'), (120,120)).convert_alpha()
+        
+
         # example images
 
         self.iconDict = {
@@ -169,7 +172,8 @@ class Design:
             team = p.transform.smoothscale(p.image.load('assets/icons/creators.png'), (350,350))
             self.showText(self.bigFont, 'Creators', 445, 60, surface)
             surface.blit(team, (275, 80))
-            surface.blit(self.linkedInLabel, (180, 530))
+            surface.blit(self.linkedInLabel, (235, 515))
+            surface.blit(self.QRCode, (500,465))
 
             surface.blit(self.creatorAugText, (75, 345))
             surface.blit(self.augCredit1Text, (75, 390))
